@@ -1,4 +1,6 @@
+using RPGame.Combat;
 using RPGame.Movement;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +12,26 @@ namespace RPGame.Controller
     {
         void Update()
         {
+            InteractWithMovement();
+            InteractWithCombat();
+        }
+
+        private void InteractWithCombat()
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
+                foreach (RaycastHit hit in hits)
+                {
+                    CombatTarget combatTarget = hit.transform.GetComponent<CombatTarget>();
+                    if (combatTarget == null) continue;
+                    GetComponent<Fighter>().Attack(combatTarget);
+                }
+            }
+        }
+
+        private void InteractWithMovement()
+        {
             if (Input.GetMouseButton(0))
             {
                 MoveToCursor();
@@ -18,13 +40,17 @@ namespace RPGame.Controller
 
         private void MoveToCursor()
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hitInfo;
-            bool hasHit = Physics.Raycast(ray, out hitInfo);
+            bool hasHit = Physics.Raycast(GetMouseRay(), out hitInfo);
             if (hasHit)
             {
                 GetComponent<Mover>().MoveTo(hitInfo.point);
             }
+        }
+
+        private static Ray GetMouseRay()
+        {
+            return Camera.main.ScreenPointToRay(Input.mousePosition);
         }
     }
 }
