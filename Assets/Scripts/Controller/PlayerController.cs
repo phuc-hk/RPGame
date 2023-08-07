@@ -1,31 +1,30 @@
+using RPGame.Movement;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class PlayerController : MonoBehaviour
+namespace RPGame.Controller
 {
-    void Start()
+    public class PlayerController : MonoBehaviour
     {
-        
-    }
-
-    void Update()
-    {
-        if (Input.GetMouseButton(0))
+        void Update()
         {
-            MoveToCursor();
+            if (Input.GetMouseButton(0))
+            {
+                MoveToCursor();
+            }
         }
-    }
 
-    private void MoveToCursor()
-    {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hitInfo;
-        bool hasHit = Physics.Raycast(ray, out hitInfo);
-        if (hasHit)
+        private void MoveToCursor()
         {
-            GetComponent<Mover>().MoveTo(hitInfo.point);
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hitInfo;
+            bool hasHit = Physics.Raycast(ray, out hitInfo);
+            if (hasHit)
+            {
+                GetComponent<Mover>().MoveTo(hitInfo.point);
+            }
         }
     }
 }

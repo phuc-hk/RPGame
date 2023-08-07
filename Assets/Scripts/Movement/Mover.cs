@@ -4,30 +4,33 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Mover : MonoBehaviour
+namespace RPGame.Movement
 {
-    NavMeshAgent navMeshAgent;
-
-    private void Start()
+    public class Mover : MonoBehaviour
     {
-        navMeshAgent = GetComponentInChildren<NavMeshAgent>();
-    }
+        NavMeshAgent navMeshAgent;
 
-    private void Update()
-    {
-        UpdateAnimation();
-    }
+        private void Start()
+        {
+            navMeshAgent = GetComponentInChildren<NavMeshAgent>();
+        }
 
-    private void UpdateAnimation()
-    {
-        Vector3 velocity = navMeshAgent.velocity;
-        Vector3 localVelocity = transform.InverseTransformDirection(velocity);
-        float speed = localVelocity.z;
-        GetComponent<Animator>().SetFloat("forwardSpeed",speed);
-    }
+        private void Update()
+        {
+            UpdateAnimation();
+        }
 
-    public void MoveTo(Vector3 destination)
-    {
-        navMeshAgent.destination = destination;
+        private void UpdateAnimation()
+        {
+            Vector3 velocity = navMeshAgent.velocity;
+            Vector3 localVelocity = transform.InverseTransformDirection(velocity);
+            float speed = localVelocity.z;
+            GetComponent<Animator>().SetFloat("forwardSpeed", speed);
+        }
+
+        public void MoveTo(Vector3 destination)
+        {
+            navMeshAgent.destination = destination;
+        }
     }
 }
