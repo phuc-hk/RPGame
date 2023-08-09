@@ -31,6 +31,12 @@ namespace RPGame.Movement
         public void MoveTo(Vector3 destination)
         {
             navMeshAgent.destination = destination;
+            navMeshAgent.isStopped = false;
+        }
+
+        public void Stop()
+        {
+            navMeshAgent.isStopped = true;
         }
     }
 }

@@ -24,7 +24,9 @@ namespace RPGame.Controller
                 CombatTarget combatTarget = hit.transform.GetComponent<CombatTarget>();
                 if (combatTarget == null) continue;
                 if (Input.GetMouseButtonDown(0))
+                {
                     GetComponent<Fighter>().Attack(combatTarget);
+                }             
                 return true;
             }          
             return false;
