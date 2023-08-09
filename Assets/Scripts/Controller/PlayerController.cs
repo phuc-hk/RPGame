@@ -11,41 +11,38 @@ namespace RPGame.Controller
     public class PlayerController : MonoBehaviour
     {
         void Update()
-        {
-            InteractWithMovement();
-            InteractWithCombat();
+        {          
+            if(InteractWithCombat()) return;
+            if(InteractWithMovement()) return;
         }
 
-        private void InteractWithCombat()
+        private bool InteractWithCombat()
         {
-            if (Input.GetMouseButtonDown(0))
+            RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
+            foreach (RaycastHit hit in hits)
             {
-                RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
-                foreach (RaycastHit hit in hits)
-                {
-                    CombatTarget combatTarget = hit.transform.GetComponent<CombatTarget>();
-                    if (combatTarget == null) continue;
+                CombatTarget combatTarget = hit.transform.GetComponent<CombatTarget>();
+                if (combatTarget == null) continue;
+                if (Input.GetMouseButtonDown(0))
                     GetComponent<Fighter>().Attack(combatTarget);
-                }
-            }
+                return true;
+            }          
+            return false;
         }
 
-        private void InteractWithMovement()
-        {
-            if (Input.GetMouseButton(0))
-            {
-                MoveToCursor();
-            }
-        }
-
-        private void MoveToCursor()
+        private bool InteractWithMovement()
         {
             RaycastHit hitInfo;
             bool hasHit = Physics.Raycast(GetMouseRay(), out hitInfo);
             if (hasHit)
             {
-                GetComponent<Mover>().MoveTo(hitInfo.point);
+                if (Input.GetMouseButton(0))
+                {
+                    GetComponent<Mover>().MoveTo(hitInfo.point);
+                }
+                return true;
             }
+            return false;
         }
 
         private static Ray GetMouseRay()
