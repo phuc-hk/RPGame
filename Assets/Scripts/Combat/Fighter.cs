@@ -17,8 +17,7 @@ namespace RPGame.Combat
 
         private void Update()
         {
-            timeSinceLastAttack += Time.deltaTime;
-            
+            timeSinceLastAttack += Time.deltaTime;           
 
             if (target != null)
             {
@@ -39,11 +38,18 @@ namespace RPGame.Combat
         {
             if (timeSinceLastAttack > timeBetweenAttack)
             {
+                //This will trigger Hit() event
                 GetComponent<Animator>().SetTrigger("attack");
                 timeSinceLastAttack = 0;
             }       
         }
 
+        //Hit event of Attack Animation
+        void Hit()
+        {
+            Heath targetHeath = target.GetComponent<Heath>();
+            targetHeath.TakeDamage(5);
+        }
         public void Attack(CombatTarget combatTarget)
         {
             GetComponent<ActionScheduler>().StartAction(this);
@@ -55,9 +61,6 @@ namespace RPGame.Combat
            target = null;
         }
 
-        void Hit()
-        {
 
-        }
     }
 }
