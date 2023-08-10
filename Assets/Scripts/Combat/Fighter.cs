@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace RPGame.Combat
 {
-    public class Fighter : MonoBehaviour
+    public class Fighter : MonoBehaviour, IAction
     {
         Transform target;
         [SerializeField] float weaponRange;
@@ -22,16 +22,19 @@ namespace RPGame.Combat
                 }    
                 else
                 {
-                    GetComponent<Mover>().Stop();
-                    target = null;
+                    GetComponent<Mover>().Cancel();
                 }
             }          
         }
         public void Attack(CombatTarget combatTarget)
         {
             GetComponent<ActionScheduler>().StartAction(this);
-            //Debug.Log("Attack " + combatTarget.name);
             target = combatTarget.transform;
+        }
+
+        public void Cancel()
+        {
+           target = null;
         }
     }
 }
