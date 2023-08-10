@@ -1,3 +1,4 @@
+using RPGame.Core;
 using RPGame.Movement;
 using System.Collections;
 using System.Collections.Generic;
@@ -28,7 +29,8 @@ namespace RPGame.Combat
         }
         public void Attack(CombatTarget combatTarget)
         {
-            Debug.Log("Attack " + combatTarget.name);
+            GetComponent<ActionScheduler>().StartAction(this);
+            //Debug.Log("Attack " + combatTarget.name);
             target = combatTarget.transform;
         }
     }

@@ -40,7 +40,7 @@ namespace RPGame.Controller
             {
                 if (Input.GetMouseButton(0))
                 {
-                    GetComponent<Mover>().MoveTo(hitInfo.point);
+                    GetComponent<Mover>().StartMoveAction(hitInfo.point);
                 }
                 return true;
             }
