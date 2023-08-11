@@ -46,6 +46,7 @@ namespace RPGame.Combat
                 //This will trigger Hit() event
                 GetComponent<Animator>().SetTrigger("attack");
                 timeSinceLastAttack = 0;
+                transform.LookAt(target);
             }       
         }
 
