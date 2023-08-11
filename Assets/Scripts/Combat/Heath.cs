@@ -1,17 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace RPGame.Combat 
 {
     public class Heath : MonoBehaviour
     {
         [SerializeField] float heath;
+        public UnityEvent OnDeath;
 
         public void TakeDamage(float damage)
         {
             heath = Mathf.Max(heath - damage, 0);
-            print(heath);
+            if (heath == 0)
+            {
+                GetComponent<Animator>().SetTrigger("death");
+                OnDeath?.Invoke();
+            }
         }
     }
 }

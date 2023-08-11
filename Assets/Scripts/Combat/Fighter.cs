@@ -15,6 +15,11 @@ namespace RPGame.Combat
         Transform target;
         bool isInrange;
 
+        void Start()
+        {
+            
+        }
+
         private void Update()
         {
             timeSinceLastAttack += Time.deltaTime;           
@@ -49,6 +54,7 @@ namespace RPGame.Combat
         {
             Heath targetHeath = target.GetComponent<Heath>();
             targetHeath.TakeDamage(5);
+            targetHeath.OnDeath.AddListener(Cancel);
         }
         public void Attack(CombatTarget combatTarget)
         {

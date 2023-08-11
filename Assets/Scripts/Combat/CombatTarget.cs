@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace RPGame.Combat
 {
+    [RequireComponent(typeof(Heath))]
     public class CombatTarget : MonoBehaviour
     {
 
