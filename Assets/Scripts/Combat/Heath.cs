@@ -20,6 +20,11 @@ namespace RPGame.Combat
                 OnDeath?.Invoke();
             }
         }
+
+        public bool IsDie()
+        {
+            return heath == 0;
+        }
     }
 }
 

@@ -22,21 +22,27 @@ namespace RPGame.Combat
 
         private void Update()
         {
-            timeSinceLastAttack += Time.deltaTime;           
+            timeSinceLastAttack += Time.deltaTime;
 
-            if (target != null)
+            if (target == null) return;
+
+            if (target.GetComponent<Heath>().IsDie()) return;
+
+            if (!IsInRange())
             {
-                isInrange = Vector3.Distance(transform.position, target.position) < weaponRange;
-                if(!isInrange)
-                {
-                    GetComponent<Mover>().MoveTo(target.position);                   
-                }    
-                else
-                {
-                    GetComponent<Mover>().Cancel();
-                    AttackBehavior();
-                }
-            }          
+                GetComponent<Mover>().MoveTo(target.position);
+            }
+            else
+            {
+                GetComponent<Mover>().Cancel();
+                AttackBehavior();
+            }
+
+        }
+
+        private bool IsInRange()
+        {
+            return Vector3.Distance(transform.position, target.position) < weaponRange;
         }
 
         private void AttackBehavior()
@@ -57,7 +63,7 @@ namespace RPGame.Combat
             targetHeath.TakeDamage(5);
             targetHeath.OnDeath.AddListener(Cancel);
         }
-        public void Attack(CombatTarget combatTarget)
+        public void Attack(GameObject combatTarget)
         {
             GetComponent<ActionScheduler>().StartAction(this);
             target = combatTarget.transform;           
