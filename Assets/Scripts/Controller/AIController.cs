@@ -9,21 +9,23 @@ public class AIController : MonoBehaviour
     bool isInRange = false;
     bool hadAttack = false;
     GameObject player;
+    Fighter fighter;
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        fighter = GetComponent<Fighter>();
     }
     void Update()
     { 
         isInRange = chaseDistance > Vector3.Distance(player.transform.position, gameObject.transform.position);
-        if (isInRange)
+        if (isInRange && fighter.CanAttack())
         {   
             if(!hadAttack)
             {
-                print(gameObject.name + "Found player");
+                print(gameObject.name + "Found player");               
+                fighter.Attack(player);
                 hadAttack = true;
-                GetComponent<Fighter>().Attack(player);              
             }                        
         }
         else

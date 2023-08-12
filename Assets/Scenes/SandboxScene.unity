@@ -182,6 +182,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2185616138344430049, guid: c06afd06d90fad9469364fc4f31a51b9, type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2185616138344430049, guid: c06afd06d90fad9469364fc4f31a51b9, type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2185616138344430049, guid: c06afd06d90fad9469364fc4f31a51b9, type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1831255012}
+    - target: {fileID: 2185616138344430049, guid: c06afd06d90fad9469364fc4f31a51b9, type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2185616138344430049, guid: c06afd06d90fad9469364fc4f31a51b9, type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Cancel
+      objectReference: {fileID: 0}
+    - target: {fileID: 2185616138344430049, guid: c06afd06d90fad9469364fc4f31a51b9, type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: RPGame.Combat.Fighter, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2185616138344430049, guid: c06afd06d90fad9469364fc4f31a51b9, type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c06afd06d90fad9469364fc4f31a51b9, type: 3}
 --- !u!1 &416216701
@@ -1118,6 +1146,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 409538, guid: 5a346deceb21d0c4781e67a70fbcc1f6, type: 3}
   m_PrefabInstance: {fileID: 1801965704}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1831255012 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -3535878303018232861, guid: c06afd06d90fad9469364fc4f31a51b9, type: 3}
+  m_PrefabInstance: {fileID: 71668787}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23877f6a113b3e2458c04f566da3ab0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1876989774
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1333,6 +1372,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2118108471 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 915288242326296235, guid: 7179fbe91ff35bb4882b6be31031c448, type: 3}
+  m_PrefabInstance: {fileID: 2118108458}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 752855292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23877f6a113b3e2458c04f566da3ab0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2118108477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1348,4 +1398,16 @@ MonoBehaviour:
   heath: 100
   OnDeath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2118108471}
+        m_TargetAssemblyTypeName: RPGame.Combat.Fighter, Assembly-CSharp
+        m_MethodName: Cancel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

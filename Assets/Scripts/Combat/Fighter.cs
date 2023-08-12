@@ -13,7 +13,7 @@ namespace RPGame.Combat
 
         float timeSinceLastAttack = 0;
         Transform target;
-        bool isInrange;
+        //bool isInrange;
 
         void Start()
         {
@@ -26,9 +26,13 @@ namespace RPGame.Combat
 
             if (target == null) return;
 
-            if (target.GetComponent<Heath>().IsDie()) return;
+            if (target.GetComponent<Heath>().IsDie())
+            {
+                Cancel();
+                return;
+            }
 
-            if (!IsInRange())
+            if (!IsInWeaponRange())
             {
                 GetComponent<Mover>().MoveTo(target.position);
             }
@@ -40,7 +44,7 @@ namespace RPGame.Combat
 
         }
 
-        private bool IsInRange()
+        private bool IsInWeaponRange()
         {
             return Vector3.Distance(transform.position, target.position) < weaponRange;
         }
@@ -61,7 +65,7 @@ namespace RPGame.Combat
         {
             Heath targetHeath = target.GetComponent<Heath>();
             targetHeath.TakeDamage(5);
-            targetHeath.OnDeath.AddListener(Cancel);
+            //targetHeath.OnDeath.AddListener(Cancel);
         }
         public void Attack(GameObject combatTarget)
         {
@@ -69,11 +73,14 @@ namespace RPGame.Combat
             target = combatTarget.transform;           
         }
 
+        public bool CanAttack()
+        {
+            Heath heath = GetComponent<Heath>();
+            return !heath.IsDie();
+        }
         public void Cancel()
         {
            target = null;
         }
-
-
     }
 }
