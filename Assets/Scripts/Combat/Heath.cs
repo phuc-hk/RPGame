@@ -16,6 +16,7 @@ namespace RPGame.Combat
             if (heath == 0)
             {
                 GetComponent<Animator>().SetTrigger("death");
+                GetComponent<BoxCollider>().enabled = false;
                 OnDeath?.Invoke();
             }
         }
