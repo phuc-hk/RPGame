@@ -1,4 +1,5 @@
 using RPGame.Combat;
+using RPGame.Core;
 using RPGame.Movement;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,7 +8,11 @@ using UnityEngine;
 public class AIController : MonoBehaviour
 {
     [SerializeField] float detectRange;
+
     bool hadAttack = false;
+    float suspicionTime = 5f;
+    float timeFromLastSeenPlayer = Mathf.Infinity;
+
     GameObject player;
     Fighter fighter;
     Mover mover;
@@ -33,12 +38,18 @@ public class AIController : MonoBehaviour
         if (IsInDetectRange() && fighter.CanAttack())
         {
             if (!hadAttack)
-            {             
+            {
+                timeFromLastSeenPlayer = 0;
                 fighter.Attack(player);
                 hadAttack = true;
             }
         }
-        else
+        else if (timeFromLastSeenPlayer < suspicionTime)
+        {
+            timeFromLastSeenPlayer += Time.deltaTime;
+            GetComponent<ActionScheduler>().CancelCurrentAction();
+        }
+        else 
         {
             hadAttack = false;
             GetComponent<Fighter>().Cancel();

@@ -14,7 +14,14 @@ namespace RPGame.Core
                 currentAction.Cancel();
             currentAction = action;
         }
+
+        public void CancelCurrentAction()
+        {
+            StartAction(null);
+        }
     }
+
+
 
 }
 
