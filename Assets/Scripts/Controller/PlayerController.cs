@@ -10,10 +10,17 @@ namespace RPGame.Controller
 {
     public class PlayerController : MonoBehaviour
     {
+        Heath heath;
+
+        private void Start()
+        {
+            heath = GetComponent<Heath>();
+        }
         void Update()
-        {          
-            if(InteractWithCombat()) return;
-            if(InteractWithMovement()) return;
+        {
+            if (heath.IsDie()) return;
+            if (InteractWithCombat()) return;
+            if (InteractWithMovement()) return;
         }
 
         private bool InteractWithCombat()

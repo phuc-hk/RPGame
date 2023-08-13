@@ -5,33 +5,44 @@ using UnityEngine;
 
 public class AIController : MonoBehaviour
 {
-    [SerializeField] float chaseDistance;
-    bool isInRange = false;
+    [SerializeField] float detectRange;
     bool hadAttack = false;
     GameObject player;
     Fighter fighter;
+    Heath heath;
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         fighter = GetComponent<Fighter>();
+        heath = GetComponent<Heath>();
     }
     void Update()
-    { 
-        isInRange = chaseDistance > Vector3.Distance(player.transform.position, gameObject.transform.position);
-        if (isInRange && fighter.CanAttack())
-        {   
-            if(!hadAttack)
-            {
-                print(gameObject.name + "Found player");               
+    {
+        if (heath.IsDie()) return;
+        HandleAttack();
+    }
+
+    void HandleAttack()
+    {
+        if (IsInDetectRange() && fighter.CanAttack())
+        {
+            if (!hadAttack)
+            {             
                 fighter.Attack(player);
                 hadAttack = true;
-            }                        
+            }
         }
         else
         {
             hadAttack = false;
             GetComponent<Fighter>().Cancel();
         }
+    }
+
+    bool IsInDetectRange()
+    {
+        float distanceOfEnemyAndPlayer = Vector3.Distance(transform.position, player.transform.position);
+        return  distanceOfEnemyAndPlayer < detectRange;
     }
 }

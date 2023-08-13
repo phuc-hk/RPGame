@@ -1,3 +1,4 @@
+using RPGame.Combat;
 using RPGame.Core;
 using System;
 using System.Collections;
@@ -10,14 +11,17 @@ namespace RPGame.Movement
     public class Mover : MonoBehaviour, IAction
     {
         NavMeshAgent navMeshAgent;
+        Heath heath;
 
         private void Start()
         {
             navMeshAgent = GetComponentInChildren<NavMeshAgent>();
+            heath = GetComponent<Heath>();
         }
 
         private void Update()
         {
+            navMeshAgent.enabled = !heath.IsDie();
             UpdateAnimation();
         }
 

@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2439992536341934405, guid: c06afd06d90fad9469364fc4f31a51b9, type: 3}
+      propertyPath: detectRange
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1915775477256900427, guid: c06afd06d90fad9469364fc4f31a51b9, type: 3}
       propertyPath: m_Name
       value: Enemy
@@ -144,7 +148,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1915775477256900431, guid: c06afd06d90fad9469364fc4f31a51b9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 389.81848
+      value: 383.49
       objectReference: {fileID: 0}
     - target: {fileID: 1915775477256900431, guid: c06afd06d90fad9469364fc4f31a51b9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -152,7 +156,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1915775477256900431, guid: c06afd06d90fad9469364fc4f31a51b9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 382.73062
+      value: 384.21
       objectReference: {fileID: 0}
     - target: {fileID: 1915775477256900431, guid: c06afd06d90fad9469364fc4f31a51b9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1311,7 +1315,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6354361095446349878, guid: 7179fbe91ff35bb4882b6be31031c448, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 391.86676
+      value: 391.92
       objectReference: {fileID: 0}
     - target: {fileID: 6354361095446349878, guid: 7179fbe91ff35bb4882b6be31031c448, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1319,7 +1323,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6354361095446349878, guid: 7179fbe91ff35bb4882b6be31031c448, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 379.62384
+      value: 376.79
       objectReference: {fileID: 0}
     - target: {fileID: 6354361095446349878, guid: 7179fbe91ff35bb4882b6be31031c448, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1395,7 +1399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c26b1dc25145204ca754cf45178975d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heath: 100
+  heath: 10
   OnDeath:
     m_PersistentCalls:
       m_Calls:

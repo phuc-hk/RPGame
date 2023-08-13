@@ -13,7 +13,7 @@ namespace RPGame.Combat
 
         float timeSinceLastAttack = 0;
         Transform target;
-        //bool isInrange;
+        Heath targetHeath;
 
         void Start()
         {
@@ -63,7 +63,7 @@ namespace RPGame.Combat
         //Hit event of Attack Animation
         void Hit()
         {
-            Heath targetHeath = target.GetComponent<Heath>();
+            targetHeath = target.GetComponent<Heath>();
             targetHeath.TakeDamage(5);
             //targetHeath.OnDeath.AddListener(Cancel);
         }
