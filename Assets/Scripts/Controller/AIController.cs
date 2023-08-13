@@ -1,4 +1,5 @@
 using RPGame.Combat;
+using RPGame.Movement;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,13 +10,17 @@ public class AIController : MonoBehaviour
     bool hadAttack = false;
     GameObject player;
     Fighter fighter;
+    Mover mover;
     Heath heath;
+    Vector3 guardPositon;
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         fighter = GetComponent<Fighter>();
+        mover = GetComponent<Mover>();
         heath = GetComponent<Heath>();
+        guardPositon = transform.position;
     }
     void Update()
     {
@@ -37,6 +42,7 @@ public class AIController : MonoBehaviour
         {
             hadAttack = false;
             GetComponent<Fighter>().Cancel();
+            GetComponent<Mover>().MoveTo(guardPositon);
         }
     }
 
