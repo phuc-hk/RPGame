@@ -45,4 +45,10 @@ public class AIController : MonoBehaviour
         float distanceOfEnemyAndPlayer = Vector3.Distance(transform.position, player.transform.position);
         return  distanceOfEnemyAndPlayer < detectRange;
     }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, detectRange);
+    }
 }
