@@ -15,9 +15,10 @@ public class AIController : MonoBehaviour
     bool hadAttack = false;
     float suspicionTime = 5f;
     float timeFromLastSeenPlayer = Mathf.Infinity;
-
     float distanceTollerance = 1f;
     int currentWayPointIndex = 0;
+    float timeFromArrivedWayPoint = Mathf.Infinity;
+    float dwellingTime = 3f;
 
     GameObject player;
     Fighter fighter;
@@ -36,17 +37,10 @@ public class AIController : MonoBehaviour
     void Update()
     {
         if (heath.IsDie()) return;
-        HandleAttack();
-    }
-
-    void HandleAttack()
-    {
+        //HandleAttack();
         if (IsInDetectRange() && fighter.CanAttack())
         {
-            if (!hadAttack)
-            {
-                AttackBehavior();
-            }
+             AttackBehavior();
         }
         else if (timeFromLastSeenPlayer < suspicionTime)
         {
@@ -56,18 +50,47 @@ public class AIController : MonoBehaviour
         {
             PatrolBehavior();
         }
+
+        UpdateTimer();
     }
+
+    private void UpdateTimer()
+    {
+        timeFromArrivedWayPoint += Time.deltaTime;
+        timeFromLastSeenPlayer += Time.deltaTime;
+    }
+
+    //void HandleAttack()
+    //{
+    //    if (IsInDetectRange() && fighter.CanAttack())
+    //    {
+    //        if (!hadAttack)
+    //        {
+    //            AttackBehavior();
+    //        }
+    //    }
+    //    else if (timeFromLastSeenPlayer < suspicionTime)
+    //    {
+    //        SuspicionBehavior();
+    //    }
+    //    else
+    //    {
+    //        PatrolBehavior();
+    //    }
+    //}
 
     private void AttackBehavior()
     {
-        timeFromLastSeenPlayer = 0;
-        fighter.Attack(player);
-        hadAttack = true;
+        if(!hadAttack)
+        {
+            timeFromLastSeenPlayer = 0;
+            fighter.Attack(player);
+            hadAttack = true;
+        }    
     }
 
     private void SuspicionBehavior()
     {
-        timeFromLastSeenPlayer += Time.deltaTime;
         GetComponent<ActionScheduler>().CancelCurrentAction();
     }
 
@@ -82,12 +105,14 @@ public class AIController : MonoBehaviour
         {
             if (AtWayPoint())
             {
+                timeFromArrivedWayPoint = 0;
                 CycleWayPoint();
             }
             nextPosition = GetCurrentWayPoint();
         }
 
-        mover.MoveTo(nextPosition);
+        if(timeFromArrivedWayPoint > dwellingTime)
+            mover.MoveTo(nextPosition);
     }
 
     private Vector3 GetCurrentWayPoint()
@@ -108,6 +133,7 @@ public class AIController : MonoBehaviour
 
     bool IsInDetectRange()
     {
+        //if (player.GetComponent<Heath>().IsDie()) return false;
         float distanceOfEnemyAndPlayer = Vector3.Distance(transform.position, player.transform.position);
         return  distanceOfEnemyAndPlayer < detectRange;
     }

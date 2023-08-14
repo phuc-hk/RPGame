@@ -21,7 +21,7 @@ namespace RPGame.Movement
 
         private void Update()
         {
-            navMeshAgent.enabled = !heath.IsDie();
+            this.enabled = !heath.IsDie();
             UpdateAnimation();
         }
 
