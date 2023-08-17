@@ -11,6 +11,7 @@ public class AIController : MonoBehaviour
 {
     [SerializeField] float detectRange;
     [SerializeField] PatrolPath patrolPath;
+    [SerializeField] float patrolSpeedFraction;
 
     bool hadAttack = false;
     float suspicionTime = 5f;
@@ -112,7 +113,7 @@ public class AIController : MonoBehaviour
         }
 
         if(timeFromArrivedWayPoint > dwellingTime)
-            mover.MoveTo(nextPosition);
+            mover.MoveTo(nextPosition, patrolSpeedFraction);
     }
 
     private Vector3 GetCurrentWayPoint()

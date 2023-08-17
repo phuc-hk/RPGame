@@ -10,6 +10,7 @@ namespace RPGame.Movement
 {
     public class Mover : MonoBehaviour, IAction
     {
+        [SerializeField] float maxSpeed;
         NavMeshAgent navMeshAgent;
         Heath heath;
 
@@ -40,8 +41,9 @@ namespace RPGame.Movement
             navMeshAgent.isStopped = false;
         }
 
-        public void MoveTo(Vector3 destination)
+        public void MoveTo(Vector3 destination, float speedFraction)
         {
+            navMeshAgent.speed = maxSpeed * Mathf.Clamp01(speedFraction);
             navMeshAgent.destination = destination;
             navMeshAgent.isStopped = false;
         }

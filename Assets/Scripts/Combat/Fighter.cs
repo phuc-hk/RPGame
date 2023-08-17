@@ -10,6 +10,8 @@ namespace RPGame.Combat
     {
         [SerializeField] float weaponRange;
         [SerializeField] float timeBetweenAttack = 3.0f;
+        [SerializeField] float weaponDamage = 10f;
+        [SerializeField] float chasingSpeedFraction;
 
         float timeSinceLastAttack = 0;
         Transform target;
@@ -34,7 +36,7 @@ namespace RPGame.Combat
 
             if (!IsInWeaponRange())
             {
-                GetComponent<Mover>().MoveTo(target.position);
+                GetComponent<Mover>().MoveTo(target.position, chasingSpeedFraction);
             }
             else
             {
@@ -64,7 +66,7 @@ namespace RPGame.Combat
         void Hit()
         {
             targetHeath = target.GetComponent<Heath>();
-            targetHeath.TakeDamage(5);
+            targetHeath.TakeDamage(weaponDamage);
             //targetHeath.OnDeath.AddListener(Cancel);
         }
         public void Attack(GameObject combatTarget)
