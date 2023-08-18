@@ -74,7 +74,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6097021160319633636, guid: e81c8d7d1d65a5245929ae509e7859c9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 389.81848
+      value: 377.9
       objectReference: {fileID: 0}
     - target: {fileID: 6097021160319633636, guid: e81c8d7d1d65a5245929ae509e7859c9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -82,7 +82,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6097021160319633636, guid: e81c8d7d1d65a5245929ae509e7859c9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 382.73062
+      value: 379.6
       objectReference: {fileID: 0}
     - target: {fileID: 6097021160319633636, guid: e81c8d7d1d65a5245929ae509e7859c9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -111,6 +111,10 @@ PrefabInstance:
     - target: {fileID: 6097021160319633636, guid: e81c8d7d1d65a5245929ae509e7859c9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6097021160319633638, guid: e81c8d7d1d65a5245929ae509e7859c9, type: 3}
+      propertyPath: m_Speed
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6097021160319633640, guid: e81c8d7d1d65a5245929ae509e7859c9, type: 3}
@@ -148,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d04e3aeab3464ca4da914da1789488fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxSpeed: 4
 --- !u!114 &-3535878303018232861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,6 +167,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponRange: 2
   timeBetweenAttack: 2
+  weaponDamage: 10
+  chasingSpeedFraction: 1
 --- !u!114 &-2439992536341934405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,7 +181,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2125827e613541a4485d8c8adf74e4fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chaseDistance: 3
+  detectRange: 6
+  patrolPath: {fileID: 0}
+  patrolSpeedFraction: 0.5
+--- !u!114 &1886085012134826616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1915775477256900427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8364ef9f5aac8e4a8e7f5a6de3fe04a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2185616138344430049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,10 +208,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c26b1dc25145204ca754cf45178975d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heath: 20
+  heath: 30
   OnDeath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: -3535878303018232861}
+        m_TargetAssemblyTypeName: RPGame.Combat.Fighter, Assembly-CSharp
+        m_MethodName: Cancel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &4027605432556057468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,18 +234,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 912368be818d3e6428b1a378ef88bec6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1886085012134826616
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1915775477256900427}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8364ef9f5aac8e4a8e7f5a6de3fe04a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &1915775477256900431 stripped
