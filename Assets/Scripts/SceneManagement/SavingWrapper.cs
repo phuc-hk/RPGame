@@ -29,12 +29,12 @@ namespace RPGame.SceneManagement
             }
         }
 
-        private void Load()
+        public void Load()
         {
             GetComponent<SavingSystem>().Load(defaultSaving);
         }
 
-        private void Save()
+        public void Save()
         {
             GetComponent<SavingSystem>().Save(defaultSaving);
         }
