@@ -8,9 +8,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1790137977, guid: e81c8d7d1d65a5245929ae509e7859c9, type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 11400000, guid: e0a25a9f832a5d3469ad995b1ff2bcc5, type: 2}
+    - target: {fileID: 1790137977, guid: e81c8d7d1d65a5245929ae509e7859c9, type: 3}
       propertyPath: swordPrefab
       value: 
       objectReference: {fileID: 899828510732666938, guid: 896d462da057efc41ae2133de086563d, type: 3}
+    - target: {fileID: 1790137977, guid: e81c8d7d1d65a5245929ae509e7859c9, type: 3}
+      propertyPath: handTransform
+      value: 
+      objectReference: {fileID: 1106704309841503957}
     - target: {fileID: 1790137977, guid: e81c8d7d1d65a5245929ae509e7859c9, type: 3}
       propertyPath: swordPosition
       value: 
