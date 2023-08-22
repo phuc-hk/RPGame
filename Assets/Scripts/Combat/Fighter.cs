@@ -9,9 +9,8 @@ namespace RPGame.Combat
 {
     public class Fighter : MonoBehaviour, IAction
     {
-        [SerializeField] float weaponRange;
         [SerializeField] float timeBetweenAttack = 3.0f;
-        [SerializeField] float weaponDamage = 10f;
+        
         [SerializeField] float chasingSpeedFraction;
         [SerializeField] Transform handTransform = null;
         [SerializeField] Weapon weapon;
@@ -27,7 +26,7 @@ namespace RPGame.Combat
 
         private void SpawnWeapon()
         {
-            if (weapon == null) return;
+            if (weapon == null || handTransform == null) return;
             Animator animator = GetComponent<Animator>();
             weapon.Spawn(handTransform, animator);
         }
@@ -58,7 +57,7 @@ namespace RPGame.Combat
 
         private bool IsInWeaponRange()
         {
-            return Vector3.Distance(transform.position, target.position) < weaponRange;
+            return Vector3.Distance(transform.position, target.position) < weapon.WeaponRange;
         }
 
         private void AttackBehavior()
@@ -76,7 +75,7 @@ namespace RPGame.Combat
         void Hit()
         {
             targetHeath = target.GetComponent<Heath>();
-            targetHeath.TakeDamage(weaponDamage);
+            targetHeath.TakeDamage(weapon.WeaponDamage);
             //targetHeath.OnDeath.AddListener(Cancel);
         }
         public void Attack(GameObject combatTarget)

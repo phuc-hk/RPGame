@@ -57,6 +57,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30cf93deff988e74e88a144bd2127c18, type: 3}
+--- !u!4 &870071720266656481 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 423694, guid: 30cf93deff988e74e88a144bd2127c18, type: 3}
+  m_PrefabInstance: {fileID: 870071720266767855}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5623531197589686187
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -165,10 +170,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23877f6a113b3e2458c04f566da3ab0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponRange: 2
   timeBetweenAttack: 2
-  weaponDamage: 10
   chasingSpeedFraction: 1
+  handTransform: {fileID: 870071720266656481}
+  weapon: {fileID: 11400000, guid: 173d84e67e240624d89cf77d4890e1f6, type: 2}
 --- !u!114 &-2439992536341934405
 MonoBehaviour:
   m_ObjectHideFlags: 0
