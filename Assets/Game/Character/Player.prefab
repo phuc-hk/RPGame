@@ -8,6 +8,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1790137977, guid: e81c8d7d1d65a5245929ae509e7859c9, type: 3}
+      propertyPath: swordPrefab
+      value: 
+      objectReference: {fileID: 899828510732666938, guid: 896d462da057efc41ae2133de086563d, type: 3}
+    - target: {fileID: 1790137977, guid: e81c8d7d1d65a5245929ae509e7859c9, type: 3}
+      propertyPath: swordPosition
+      value: 
+      objectReference: {fileID: 1106704309841503957}
+    - target: {fileID: 1790137977, guid: e81c8d7d1d65a5245929ae509e7859c9, type: 3}
+      propertyPath: weaponOverride
+      value: 
+      objectReference: {fileID: 22100000, guid: 3b9d617a557b18b41831029d01f56f19, type: 2}
+    - target: {fileID: 1790137977, guid: e81c8d7d1d65a5245929ae509e7859c9, type: 3}
       propertyPath: chasingSpeedFraction
       value: 1
       objectReference: {fileID: 0}
@@ -205,3 +217,8 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: bfbe2e8b331e2cc42be1591f949c0e41, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 679ff741e12a7e740819ede24a7000b7, type: 3}
+--- !u!4 &1106704309841503957 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 461188, guid: 679ff741e12a7e740819ede24a7000b7, type: 3}
+  m_PrefabInstance: {fileID: 1106704309841047377}
+  m_PrefabAsset: {fileID: 0}

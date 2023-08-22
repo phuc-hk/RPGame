@@ -1,5 +1,6 @@
 using RPGame.Core;
 using RPGame.Movement;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,9 @@ namespace RPGame.Combat
         [SerializeField] float timeBetweenAttack = 3.0f;
         [SerializeField] float weaponDamage = 10f;
         [SerializeField] float chasingSpeedFraction;
+        [SerializeField] GameObject swordPrefab = null;
+        [SerializeField] Transform swordPosition = null;
+        [SerializeField] AnimatorOverrideController weaponOverride;
 
         float timeSinceLastAttack = 0;
         Transform target;
@@ -19,7 +23,14 @@ namespace RPGame.Combat
 
         void Start()
         {
-            
+            SpawnWeapon();
+        }
+
+        private void SpawnWeapon()
+        {
+            Instantiate(swordPrefab, swordPosition);
+            Animator animator = GetComponent<Animator>();
+            animator.runtimeAnimatorController = weaponOverride;
         }
 
         private void Update()
