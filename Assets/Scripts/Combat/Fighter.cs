@@ -13,7 +13,8 @@ namespace RPGame.Combat
         
         [SerializeField] float chasingSpeedFraction;
         [SerializeField] Transform handTransform = null;
-        [SerializeField] Weapon weapon;
+        [SerializeField] Weapon defaultWeapon;
+        Weapon currentWeapon;
 
         float timeSinceLastAttack = 0;
         Transform target;
@@ -21,12 +22,12 @@ namespace RPGame.Combat
 
         void Start()
         {
-            SpawnWeapon();
+            EquipWeapon(defaultWeapon);
         }
 
-        private void SpawnWeapon()
+        public void EquipWeapon(Weapon weapon)
         {
-            if (weapon == null || handTransform == null) return;
+            currentWeapon = weapon;
             Animator animator = GetComponent<Animator>();
             weapon.Spawn(handTransform, animator);
         }
@@ -57,7 +58,7 @@ namespace RPGame.Combat
 
         private bool IsInWeaponRange()
         {
-            return Vector3.Distance(transform.position, target.position) < weapon.WeaponRange;
+            return Vector3.Distance(transform.position, target.position) < currentWeapon.WeaponRange;
         }
 
         private void AttackBehavior()
@@ -75,7 +76,7 @@ namespace RPGame.Combat
         void Hit()
         {
             targetHeath = target.GetComponent<Heath>();
-            targetHeath.TakeDamage(weapon.WeaponDamage);
+            targetHeath.TakeDamage(currentWeapon.WeaponDamage);
             //targetHeath.OnDeath.AddListener(Cancel);
         }
         public void Attack(GameObject combatTarget)

@@ -173,7 +173,7 @@ MonoBehaviour:
   timeBetweenAttack: 2
   chasingSpeedFraction: 1
   handTransform: {fileID: 870071720266656481}
-  weapon: {fileID: 11400000, guid: 173d84e67e240624d89cf77d4890e1f6, type: 2}
+  defaultWeapon: {fileID: 11400000, guid: 173d84e67e240624d89cf77d4890e1f6, type: 2}
 --- !u!114 &-2439992536341934405
 MonoBehaviour:
   m_ObjectHideFlags: 0
