@@ -31,7 +31,7 @@ namespace RPGame.Combat
         public void LaunchProjectile(Transform rightHandPosition, Transform leftHandPosition, Transform target)
         {
             Projectile newProjectile = Instantiate(projectile, GetHandTransform(rightHandPosition, leftHandPosition).position, Quaternion.identity);
-            newProjectile.SetTarget(target);
+            newProjectile.SetTarget(target, weaponDamage);
         }
 
         private Transform GetHandTransform(Transform rightHandPosition, Transform leftHandPosition)

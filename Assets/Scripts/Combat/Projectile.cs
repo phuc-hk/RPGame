@@ -1,3 +1,4 @@
+using RPGame.Combat;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ public class Projectile : MonoBehaviour
 {
     Transform target = null;
     float speed = 10;
+    float damage = 0;
     void Update()
     {
         if (target == null) return;
@@ -14,16 +16,18 @@ public class Projectile : MonoBehaviour
         transform.Translate(Vector3.forward * Time.deltaTime * speed);
     }
 
-    public void SetTarget(Transform shootTarget)
+    public void SetTarget(Transform shootTarget, float shootDamage)
     {
-        target = shootTarget; 
+        target = shootTarget;
+        damage = shootDamage;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log("Hit target");
+            //Debug.Log("Hit target");
+            other.GetComponent<Heath>().TakeDamage(damage);
             Destroy(gameObject);
         }
     }
