@@ -14,6 +14,7 @@ namespace RPGame.Combat
         [SerializeField] Transform rightHandTransform = null;
         [SerializeField] Transform leftHandTransform;
         [SerializeField] Weapon defaultWeapon;
+        
         Weapon currentWeapon;
         GameObject equiptWeapon;
 
@@ -72,7 +73,7 @@ namespace RPGame.Combat
             transform.LookAt(target);
             if (timeSinceLastAttack > timeBetweenAttack)
             {
-                //This will trigger Hit() event
+                //This will trigger event of Attack animation
                 GetComponent<Animator>().SetTrigger("attack");
                 timeSinceLastAttack = 0;              
             }       
@@ -85,6 +86,13 @@ namespace RPGame.Combat
             targetHeath.TakeDamage(currentWeapon.WeaponDamage);
             //targetHeath.OnDeath.AddListener(Cancel);
         }
+
+        //Shoot event of Attack Animation
+        void Shoot()
+        {
+            currentWeapon.LaunchProjectile(rightHandTransform, leftHandTransform, target);
+        }
+
         public void Attack(GameObject combatTarget)
         {
             GetComponent<ActionScheduler>().StartAction(this);

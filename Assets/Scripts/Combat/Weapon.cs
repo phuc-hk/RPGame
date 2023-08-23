@@ -10,6 +10,7 @@ namespace RPGame.Combat
         [SerializeField] float weaponRange;
         [SerializeField] float weaponDamage;
         [SerializeField] bool isRightHand;
+        [SerializeField] Projectile projectile;
         public float WeaponRange => weaponRange;
         public float WeaponDamage => weaponDamage;
         public GameObject Spawn(Transform rightHandPosition, Transform leftHandPosition, Animator animator)
@@ -19,9 +20,7 @@ namespace RPGame.Combat
 
             if (weaponPrefab != null)
             {
-                Transform weaponPosition;
-                if (isRightHand) weaponPosition = rightHandPosition;
-                else weaponPosition = leftHandPosition;
+                Transform weaponPosition = GetHandTransform(rightHandPosition, leftHandPosition);
                 GameObject weapon = (GameObject)Instantiate(weaponPrefab, weaponPosition);
                 return weapon;
             }
@@ -29,5 +28,23 @@ namespace RPGame.Combat
                 return null;
         }
 
+        public void LaunchProjectile(Transform rightHandPosition, Transform leftHandPosition, Transform target)
+        {
+            Projectile newProjectile = Instantiate(projectile, GetHandTransform(rightHandPosition, leftHandPosition).position, Quaternion.identity);
+            newProjectile.SetTarget(target);
+        }
+
+        private Transform GetHandTransform(Transform rightHandPosition, Transform leftHandPosition)
+        {
+            Transform weaponPosition;
+            if (isRightHand) weaponPosition = rightHandPosition;
+            else weaponPosition = leftHandPosition;
+            return weaponPosition;
+        }
+
+        public bool HasProjectile()
+        {
+            return projectile != null;
+        }
     }
 }

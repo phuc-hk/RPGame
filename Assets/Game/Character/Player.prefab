@@ -32,6 +32,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 22100000, guid: 3b9d617a557b18b41831029d01f56f19, type: 2}
     - target: {fileID: 1790137977, guid: e81c8d7d1d65a5245929ae509e7859c9, type: 3}
+      propertyPath: arrowProjectile
+      value: 
+      objectReference: {fileID: 979006320847705143, guid: 07ca7b1fa26b83548a7f8258736c1687, type: 3}
+    - target: {fileID: 1790137977, guid: e81c8d7d1d65a5245929ae509e7859c9, type: 3}
       propertyPath: leftHandTransform
       value: 
       objectReference: {fileID: 1106704309841449593}
