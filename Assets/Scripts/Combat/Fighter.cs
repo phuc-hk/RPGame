@@ -9,12 +9,13 @@ namespace RPGame.Combat
 {
     public class Fighter : MonoBehaviour, IAction
     {
-        [SerializeField] float timeBetweenAttack = 3.0f;
-        
+        [SerializeField] float timeBetweenAttack = 3.0f;      
         [SerializeField] float chasingSpeedFraction;
-        [SerializeField] Transform handTransform = null;
+        [SerializeField] Transform rightHandTransform = null;
+        [SerializeField] Transform leftHandTransform;
         [SerializeField] Weapon defaultWeapon;
         Weapon currentWeapon;
+        GameObject equiptWeapon;
 
         float timeSinceLastAttack = 0;
         Transform target;
@@ -29,7 +30,12 @@ namespace RPGame.Combat
         {
             currentWeapon = weapon;
             Animator animator = GetComponent<Animator>();
-            weapon.Spawn(handTransform, animator);
+            equiptWeapon = weapon.Spawn(rightHandTransform, leftHandTransform, animator);
+        }
+
+        public void UnequipWeapon()
+        {
+            Destroy(equiptWeapon);
         }
 
         private void Update()

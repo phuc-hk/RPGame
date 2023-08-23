@@ -12,7 +12,9 @@ namespace RPGame.Combat
         {
             if (other.gameObject.CompareTag("Player"))
             {
-                other.GetComponent<Fighter>().EquipWeapon(weapon);
+                Fighter fighter = other.GetComponent<Fighter>();
+                fighter.UnequipWeapon();
+                fighter.EquipWeapon(weapon);
                 Destroy(gameObject);
             }
         }
