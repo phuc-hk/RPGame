@@ -6,19 +6,39 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    Transform target = null;
-    float speed = 10;
+    [SerializeField] bool isHoming;
+    Heath target = null;
+    float speed = 20;
     float damage = 0;
+    Vector3 offsetPosition = new Vector3(0, 1, 0);
+    bool firstAim = true;
+
+
+    private void Start()
+    {
+        
+    }
     void Update()
     {
         if (target == null) return;
-        transform.LookAt(target.position);
+
+        if (firstAim)
+        {
+            transform.LookAt(target.transform.position + offsetPosition);
+            firstAim = false;
+        }
+
+        if (isHoming)
+        {
+            transform.LookAt(target.transform.position + offsetPosition);
+        }
+       
         transform.Translate(Vector3.forward * Time.deltaTime * speed);
     }
 
     public void SetTarget(Transform shootTarget, float shootDamage)
     {
-        target = shootTarget;
+        target = shootTarget.GetComponent<Heath>();
         damage = shootDamage;
     }
 
