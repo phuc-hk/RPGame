@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    [SerializeField] GameObject hitEffect;
     [SerializeField] bool isHoming;
     Heath target = null;
     float speed = 20;
@@ -46,7 +47,10 @@ public class Projectile : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            //Debug.Log("Hit target");
+            if (hitEffect != null)
+            {
+                Instantiate(hitEffect, target.transform.position + offsetPosition, Quaternion.identity);
+            }
             other.GetComponent<Heath>().TakeDamage(damage);
             Destroy(gameObject);
         }

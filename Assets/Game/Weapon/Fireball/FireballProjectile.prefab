@@ -4917,6 +4917,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e3b8ed8b920f4c4b955c5f44de7ccaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitEffect: {fileID: 2302457091093092515, guid: 69d1b1037536b504884c93bb73d662db, type: 3}
   isHoming: 1
 --- !u!65 &5023939711844937377
 BoxCollider:
