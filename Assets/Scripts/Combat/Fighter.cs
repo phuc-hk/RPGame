@@ -1,5 +1,6 @@
 using RPGame.Core;
 using RPGame.Movement;
+using RPGame.Saving;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using UnityEngine;
 
 namespace RPGame.Combat
 {
-    public class Fighter : MonoBehaviour, IAction
+    public class Fighter : MonoBehaviour, IAction, ISaveable
     {
         [SerializeField] float timeBetweenAttack = 3.0f;      
         [SerializeField] float chasingSpeedFraction;
@@ -24,7 +25,10 @@ namespace RPGame.Combat
 
         void Start()
         {
-            EquipWeapon(defaultWeapon);
+            if(currentWeapon == null)
+            {
+                EquipWeapon(defaultWeapon);
+            }          
         }
 
         public void EquipWeapon(Weapon weapon)
@@ -107,6 +111,18 @@ namespace RPGame.Combat
         public void Cancel()
         {
            target = null;
+        }
+
+        public object CaptureState()
+        {
+            return currentWeapon.name;
+        }
+
+        public void RestoreState(object state)
+        {
+            string weaponName = (string)state;
+            currentWeapon = (Weapon)Resources.Load(weaponName);
+            EquipWeapon(currentWeapon);
         }
     }
 }
