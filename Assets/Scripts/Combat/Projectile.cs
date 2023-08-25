@@ -8,6 +8,7 @@ public class Projectile : MonoBehaviour
 {
     [SerializeField] GameObject hitEffect;
     [SerializeField] bool isHoming;
+    [SerializeField] float maxLifeTime = 10;
     Heath target = null;
     float speed = 20;
     float damage = 0;
@@ -41,6 +42,7 @@ public class Projectile : MonoBehaviour
     {
         target = shootTarget.GetComponent<Heath>();
         damage = shootDamage;
+        Destroy(gameObject, maxLifeTime);
     }
 
     private void OnTriggerEnter(Collider other)
