@@ -120,6 +120,10 @@ PrefabInstance:
       propertyPath: m_Speed
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6287183171672652853, guid: e81c8d7d1d65a5245929ae509e7859c9, type: 3}
+      propertyPath: characterClass
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6097021160319633640, guid: e81c8d7d1d65a5245929ae509e7859c9, type: 3}
     - {fileID: 6097021160319633637, guid: e81c8d7d1d65a5245929ae509e7859c9, type: 3}

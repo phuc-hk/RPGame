@@ -31,17 +31,7 @@ namespace RPGame.Combat
             }          
         }
 
-        public void EquipWeapon(Weapon weapon)
-        {
-            currentWeapon = weapon;
-            Animator animator = GetComponent<Animator>();
-            equiptWeapon = weapon.Spawn(rightHandTransform, leftHandTransform, animator);
-        }
-
-        public void UnequipWeapon()
-        {
-            Destroy(equiptWeapon);
-        }
+       
 
         private void Update()
         {
@@ -113,6 +103,18 @@ namespace RPGame.Combat
            target = null;
         }
 
+        public void EquipWeapon(Weapon weapon)
+        {
+            currentWeapon = weapon;
+            Animator animator = GetComponent<Animator>();
+            equiptWeapon = weapon.Spawn(rightHandTransform, leftHandTransform, animator);
+        }
+
+        public void UnequipWeapon()
+        {
+            Destroy(equiptWeapon);
+        }
+
         public object CaptureState()
         {
             return currentWeapon.name;
@@ -124,5 +126,7 @@ namespace RPGame.Combat
             currentWeapon = (Weapon)Resources.Load(weaponName);
             EquipWeapon(currentWeapon);
         }
+
+
     }
 }

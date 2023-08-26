@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 6097021160319633637}
   - component: {fileID: 1790137977}
   - component: {fileID: 1790137983}
+  - component: {fileID: 6287183171672652853}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -147,6 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d04e3aeab3464ca4da914da1789488fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxSpeed: 0
 --- !u!114 &1790137977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,8 +161,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23877f6a113b3e2458c04f566da3ab0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponRange: 2
   timeBetweenAttack: 2
+  chasingSpeedFraction: 0
+  rightHandTransform: {fileID: 0}
+  leftHandTransform: {fileID: 0}
+  defaultWeapon: {fileID: 0}
 --- !u!114 &1790137983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,3 +178,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8364ef9f5aac8e4a8e7f5a6de3fe04a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6287183171672652853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6097021160319633632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b721ffde4498e84c8014b9b4b394eaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingLevel: 1
+  characterClass: 0
