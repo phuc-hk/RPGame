@@ -190,5 +190,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b721ffde4498e84c8014b9b4b394eaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingLevel: 1
+  startingLevel: 0
   characterClass: 0
+  progression: {fileID: 11400000, guid: 2fe2386974d68c6439dd45d0f0fcf3d8, type: 2}

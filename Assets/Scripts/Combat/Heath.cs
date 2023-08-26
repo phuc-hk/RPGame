@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using RPGame.Saving;
+using RPGame.Stats;
 
 namespace RPGame.Combat 
 {
@@ -11,6 +12,10 @@ namespace RPGame.Combat
         [SerializeField] float heath;
         public UnityEvent OnDeath;
 
+        void Start()
+        {
+            heath = GetComponent<BaseStats>().GetHealth();
+        }
         public void TakeDamage(float damage)
         {
             heath = Mathf.Max(heath - damage, 0);
