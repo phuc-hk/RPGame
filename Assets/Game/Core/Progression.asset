@@ -15,9 +15,9 @@ MonoBehaviour:
   progressionCharacters:
   - characterClass: 0
     heath:
-    - 101
-    - 202
-    - 303
+    - 100
+    - 200
+    - 300
   - characterClass: 1
     heath:
     - 55

@@ -11,14 +11,16 @@ namespace RPGame.Combat
     {
         [SerializeField] float heath;
         public UnityEvent OnDeath;
+        public UnityEvent OnHealthChange;
 
-        void Start()
+        void Awake()
         {
             heath = GetComponent<BaseStats>().GetHealth();
         }
         public void TakeDamage(float damage)
         {
             heath = Mathf.Max(heath - damage, 0);
+            OnHealthChange?.Invoke();
             if (heath == 0)
             {
                 GetComponent<Animator>().SetTrigger("death");
@@ -47,6 +49,11 @@ namespace RPGame.Combat
                 GetComponent<BoxCollider>().enabled = false;
                 OnDeath?.Invoke();
             }
+        }
+
+        public float GetHealthPercentage()
+        {
+            return 100 * (heath / GetComponent<BaseStats>().GetHealth());
         }
     }
 }
