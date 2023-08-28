@@ -5,6 +5,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace RPGame.Combat
 {
@@ -22,6 +23,8 @@ namespace RPGame.Combat
         float timeSinceLastAttack = 0;
         Transform target;
         Heath targetHeath;
+
+        public UnityEvent OnAssignTarget;
 
         void Start()
         {
@@ -90,7 +93,13 @@ namespace RPGame.Combat
         public void Attack(GameObject combatTarget)
         {
             GetComponent<ActionScheduler>().StartAction(this);
-            target = combatTarget.transform;           
+            target = combatTarget.transform;
+            OnAssignTarget?.Invoke();
+        }
+
+        public Transform GetTarget()
+        {
+            return target;
         }
 
         public bool CanAttack()
