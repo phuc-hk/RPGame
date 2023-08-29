@@ -13,28 +13,34 @@ namespace RPGame.Stats
         [System.Serializable]
         class ProgressionCharacterClass
         {
-            [SerializeField] CharacterClass characterClass;
-            [SerializeField] float[] heath;
+            public CharacterClass characterClass;
+            public ProgressionStat[] progressionStats;
 
-            public CharacterClass CharacterClass => characterClass;
-            public float GetHeath(int level)
-            {
-                return heath[level - 1];
-            }
+        }
+
+        [System.Serializable]
+        class ProgressionStat
+        {
+            public Stat stat;
+            public float[] level;
         }
 
         public float GetHealth(CharacterClass characterClass, int level)
         {
             foreach (ProgressionCharacterClass progressionCharacter in progressionCharacters)
             {
-                if (progressionCharacter.CharacterClass == characterClass)
+                if (progressionCharacter.characterClass == characterClass)
                 {
-                    return (progressionCharacter.GetHeath(level));
+                    foreach (ProgressionStat progressionStat in progressionCharacter.progressionStats)
+                    {
+                        if (progressionStat.stat == Stat.Health)
+                        {
+                            return progressionStat.level[level - 1];
+                        }
+                    }
                 }
             }
             return 0;
         }
     }
-
-
 }

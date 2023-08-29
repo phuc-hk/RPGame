@@ -14,12 +14,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   progressionCharacters:
   - characterClass: 0
-    heath:
-    - 100
-    - 200
-    - 300
+    progressionStats:
+    - stat: 0
+      level:
+      - 100
+      - 200
+      - 300
+    - stat: 1
+      level:
+      - 10
+      - 20
+      - 30
   - characterClass: 1
-    heath:
-    - 55
-    - 105
-    - 155
+    progressionStats:
+    - stat: 0
+      level:
+      - 50
+      - 100
+      - 150
+    - stat: 1
+      level:
+      - 10
+      - 20
+      - 30
