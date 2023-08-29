@@ -14,7 +14,7 @@ public class Projectile : MonoBehaviour
     float damage = 0;
     Vector3 offsetPosition = new Vector3(0, 1, 0);
     bool firstAim = true;
-
+    GameObject instigator;
 
     private void Start()
     {
@@ -38,10 +38,11 @@ public class Projectile : MonoBehaviour
         transform.Translate(Vector3.forward * Time.deltaTime * speed);
     }
 
-    public void SetTarget(Transform shootTarget, float shootDamage)
+    public void SetTarget(GameObject instigator, Transform shootTarget, float shootDamage)
     {
         target = shootTarget.GetComponent<Heath>();
         damage = shootDamage;
+        this.instigator = instigator;
         Destroy(gameObject, maxLifeTime);
     }
 
@@ -53,7 +54,7 @@ public class Projectile : MonoBehaviour
             {
                 Instantiate(hitEffect, target.transform.position + offsetPosition, Quaternion.identity);
             }
-            other.GetComponent<Heath>().TakeDamage(damage);
+            other.GetComponent<Heath>().TakeDamage(instigator, damage);
             Destroy(gameObject);
         }
     }

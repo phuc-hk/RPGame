@@ -80,14 +80,14 @@ namespace RPGame.Combat
         void Hit()
         {
             targetHeath = target.GetComponent<Heath>();
-            targetHeath.TakeDamage(currentWeapon.WeaponDamage);
+            targetHeath.TakeDamage(gameObject, currentWeapon.WeaponDamage);
             //targetHeath.OnDeath.AddListener(Cancel);
         }
 
         //Shoot event of Attack Animation
         void Shoot()
         {
-            currentWeapon.LaunchProjectile(rightHandTransform, leftHandTransform, target);
+            currentWeapon.LaunchProjectile(rightHandTransform, leftHandTransform, gameObject, target);
         }
 
         public void Attack(GameObject combatTarget)

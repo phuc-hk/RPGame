@@ -17,16 +17,29 @@ namespace RPGame.Combat
         {
             heath = GetComponent<BaseStats>().GetHealth();
         }
-        public void TakeDamage(float damage)
+        public void TakeDamage(GameObject instigator, float damage)
         {
             heath = Mathf.Max(heath - damage, 0);
             OnHealthChange?.Invoke();
             if (heath == 0)
             {
-                GetComponent<Animator>().SetTrigger("death");
-                GetComponent<BoxCollider>().enabled = false;
-                OnDeath?.Invoke();
+                GainExperience(instigator);
+                Die();
             }
+        }
+
+        private void GainExperience(GameObject instigator)
+        {
+            Experience experience = instigator.GetComponent<Experience>();
+            BaseStats baseStats = GetComponent<BaseStats>();
+            experience.GainExperience(baseStats.GetExperience());
+        }
+
+        private void Die()
+        {
+            GetComponent<Animator>().SetTrigger("death");
+            GetComponent<BoxCollider>().enabled = false;
+            OnDeath?.Invoke();
         }
 
         public bool IsDie()
