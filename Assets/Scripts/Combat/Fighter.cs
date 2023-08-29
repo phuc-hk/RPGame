@@ -79,6 +79,7 @@ namespace RPGame.Combat
         //Hit event of Attack Animation
         void Hit()
         {
+            if (target == null) return;
             targetHeath = target.GetComponent<Heath>();
             targetHeath.TakeDamage(gameObject, currentWeapon.WeaponDamage);
             //targetHeath.OnDeath.AddListener(Cancel);
