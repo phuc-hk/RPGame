@@ -25,7 +25,7 @@ namespace RPGame.Stats
             public float[] level;
         }
 
-        public float GetHealth(CharacterClass characterClass, int level)
+        public float GetStat(Stat stat, CharacterClass characterClass, int level)
         {
             foreach (ProgressionCharacterClass progressionCharacter in progressionCharacters)
             {
@@ -33,7 +33,7 @@ namespace RPGame.Stats
                 {
                     foreach (ProgressionStat progressionStat in progressionCharacter.progressionStats)
                     {
-                        if (progressionStat.stat == Stat.Health)
+                        if (progressionStat.stat == stat)
                         {
                             return progressionStat.level[level - 1];
                         }

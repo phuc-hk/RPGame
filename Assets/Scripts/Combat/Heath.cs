@@ -15,7 +15,7 @@ namespace RPGame.Combat
 
         void Awake()
         {
-            heath = GetComponent<BaseStats>().GetHealth();
+            heath = GetComponent<BaseStats>().GetStat(Stat.Health);
         }
         public void TakeDamage(GameObject instigator, float damage)
         {
@@ -32,7 +32,7 @@ namespace RPGame.Combat
         {
             Experience experience = instigator.GetComponent<Experience>();
             BaseStats baseStats = GetComponent<BaseStats>();
-            experience.GainExperience(baseStats.GetExperience());
+            experience.GainExperience(baseStats.GetStat(Stat.ExperienceReward));
         }
 
         private void Die()
@@ -66,7 +66,7 @@ namespace RPGame.Combat
 
         public float GetHealthPercentage()
         {
-            return 100 * (heath / GetComponent<BaseStats>().GetHealth());
+            return 100 * (heath / GetComponent<BaseStats>().GetStat(Stat.Health));
         }
     }
 }
