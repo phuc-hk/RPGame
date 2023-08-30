@@ -10,6 +10,8 @@ namespace RPGame.Stats
         [SerializeField]
         ProgressionCharacterClass[] progressionCharacters;
 
+        Dictionary<CharacterClass, Dictionary<Stat, float[]>> lookupTable;
+
         [System.Serializable]
         class ProgressionCharacterClass
         {
@@ -27,20 +29,30 @@ namespace RPGame.Stats
 
         public float GetStat(Stat stat, CharacterClass characterClass, int level)
         {
-            foreach (ProgressionCharacterClass progressionCharacter in progressionCharacters)
+            BuidLookup();
+            float[] levels = lookupTable[characterClass][stat];
+            if (levels.Length < level)
             {
-                if (progressionCharacter.characterClass == characterClass)
-                {
-                    foreach (ProgressionStat progressionStat in progressionCharacter.progressionStats)
-                    {
-                        if (progressionStat.stat == stat)
-                        {
-                            return progressionStat.level[level - 1];
-                        }
-                    }
-                }
+                return 0;
             }
-            return 0;
+            return levels[level-1];
+        }
+
+        void BuidLookup()
+        {
+            if (lookupTable != null) return;
+
+            lookupTable = new();
+
+            foreach (ProgressionCharacterClass progressionCharacterClass in progressionCharacters)
+            {
+                var statLookup = new Dictionary<Stat, float[]>();
+                foreach (ProgressionStat progressionStat in progressionCharacterClass.progressionStats)
+                {
+                    statLookup[progressionStat.stat] = progressionStat.level;
+                }
+                lookupTable[progressionCharacterClass.characterClass] = statLookup;
+            }
         }
     }
 }
