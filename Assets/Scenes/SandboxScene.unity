@@ -806,6 +806,23 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1252673208600555558, guid: 7c6e8438c8b6d9147b435a52a1871a50, type: 3}
   m_PrefabInstance: {fileID: 6181436095975192458}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1294225495 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8089721711229994301, guid: 2bc40a2a39e041449a8cf6829431d20b, type: 3}
+  m_PrefabInstance: {fileID: 1658436120}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1294225496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1294225495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dff3628be1f288241a5697611e6a613e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1357311426
 GameObject:
   m_ObjectHideFlags: 0
@@ -1141,11 +1158,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 963194228, guid: 2bc40a2a39e041449a8cf6829431d20b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.119352624
+      value: 0.11935262
       objectReference: {fileID: 0}
     - target: {fileID: 963194228, guid: 2bc40a2a39e041449a8cf6829431d20b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.020715773
+      value: -0.02071577
       objectReference: {fileID: 0}
     - target: {fileID: 1103564394, guid: 2bc40a2a39e041449a8cf6829431d20b, type: 3}
       propertyPath: m_Lens.FieldOfView
@@ -1173,11 +1190,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1103564395, guid: 2bc40a2a39e041449a8cf6829431d20b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.119352624
+      value: 0.11935262
       objectReference: {fileID: 0}
     - target: {fileID: 1103564395, guid: 2bc40a2a39e041449a8cf6829431d20b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.020715773
+      value: -0.02071577
       objectReference: {fileID: 0}
     - target: {fileID: 73306731509242658, guid: 2bc40a2a39e041449a8cf6829431d20b, type: 3}
       propertyPath: m_IsActive
@@ -1291,7 +1308,8 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 46
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7267472451542309880, guid: 2bc40a2a39e041449a8cf6829431d20b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2bc40a2a39e041449a8cf6829431d20b, type: 3}
 --- !u!4 &1658436121 stripped
 Transform:

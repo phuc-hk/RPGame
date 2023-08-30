@@ -27,10 +27,10 @@ MonoBehaviour:
       - 30
     - stat: 2
       level:
+      - 0
       - 10
       - 20
       - 30
-      - 40
   - characterClass: 1
     progressionStats:
     - stat: 0
@@ -43,3 +43,8 @@ MonoBehaviour:
       - 10
       - 20
       - 30
+    - stat: 2
+      level:
+      - 5
+      - 10
+      - 15

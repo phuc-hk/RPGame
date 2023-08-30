@@ -13,25 +13,13 @@ namespace RPGame.Stats
         [SerializeField] CharacterClass characterClass;
         [SerializeField] Progression progression = null;
 
-        private void Awake()
-        {
-            if (!gameObject.CompareTag("Player")) return;
-            Experience experience = GetComponent<Experience>();
-            experience.OnExperienceGain.AddListener(ShowExperience);
-            ShowExperience();
-        }
-
-        private void ShowExperience()
-        {
-            Debug.Log("Level:" + GetLevel());
-        }
 
         public float GetStat(Stat stat)
         {
             return progression.GetStat(stat, characterClass, GetLevel()); ;
         }
 
-        int GetLevel()
+        public int GetLevel()
         {
             float currentXP = GetComponent<Experience>().ExperiencePoint;
             int levelLength = progression.GetLevelLength(Stat.ExperienceToLevelUp, characterClass);
