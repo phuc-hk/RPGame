@@ -29,7 +29,6 @@ public class ExperienceDisplay : MonoBehaviour
 
     private void UpadateExperienceText()
     {
-        Debug.Log("Ex");
         GetComponent<TextMeshProUGUI>().text = experience.ExperiencePoint.ToString();
     }
 }

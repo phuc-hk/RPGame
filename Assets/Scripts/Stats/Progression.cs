@@ -38,6 +38,13 @@ namespace RPGame.Stats
             return levels[level-1];
         }
 
+        public int GetLevelLength(Stat stat, CharacterClass characterClass)
+        {
+            BuidLookup();
+            float[] levels = lookupTable[characterClass][stat];
+            return levels.Length;
+        }
+
         void BuidLookup()
         {
             if (lookupTable != null) return;
