@@ -9,13 +9,16 @@ namespace RPGame.Combat
 {
     public class Heath : MonoBehaviour, ISaveable
     {
-        [SerializeField] float heath;
+        [SerializeField] float heath = -1;
         public UnityEvent OnDeath;
         public UnityEvent OnHealthChange;
 
         void Awake()
         {
-            heath = GetComponent<BaseStats>().GetStat(Stat.Health);
+            if (heath < 0)
+            {
+                heath = GetComponent<BaseStats>().GetStat(Stat.Health);
+            }               
         }
         public void TakeDamage(GameObject instigator, float damage)
         {
