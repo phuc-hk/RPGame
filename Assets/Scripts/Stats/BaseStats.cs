@@ -12,7 +12,30 @@ namespace RPGame.Stats
         //[SerializeField] int startingLevel = 1;
         [SerializeField] CharacterClass characterClass;
         [SerializeField] Progression progression = null;
+        [SerializeField] GameObject levelUpEffect = null;
+        int currentLevel = 0;
 
+        private void Start()
+        {
+            currentLevel = GetLevel();
+            Experience experience = GetComponent<Experience>();
+            experience.OnExperienceGain.AddListener(UpdateLevel);
+        }
+
+        private void UpdateLevel()
+        {
+            int newLevel = GetLevel();
+            if (newLevel > currentLevel)
+            {
+                currentLevel = newLevel;
+                LevelUpEffect();
+            }
+        }
+
+        private void LevelUpEffect()
+        {
+            Instantiate(levelUpEffect, transform);
+        }
 
         public float GetStat(Stat stat)
         {
