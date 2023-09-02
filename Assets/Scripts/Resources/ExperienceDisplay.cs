@@ -17,6 +17,7 @@ public class ExperienceDisplay : MonoBehaviour
         fighter = GameObject.FindWithTag("Player").GetComponent<Fighter>();
         experience = GameObject.FindWithTag("Player").GetComponent<Experience>();
         fighter.OnAssignTarget.AddListener(AssignEnemyHealth);
+        UpadateExperienceText();
     }
 
     private void AssignEnemyHealth()
@@ -29,6 +30,6 @@ public class ExperienceDisplay : MonoBehaviour
 
     private void UpadateExperienceText()
     {
-        GetComponent<TextMeshProUGUI>().text = experience.ExperiencePoint.ToString();
+        GetComponent<TextMeshProUGUI>().text = experience.GetExperience().ToString();
     }
 }

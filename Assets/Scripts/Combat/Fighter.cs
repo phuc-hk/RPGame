@@ -1,6 +1,7 @@
 using RPGame.Core;
 using RPGame.Movement;
 using RPGame.Saving;
+using RPGame.Stats;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -80,15 +81,17 @@ namespace RPGame.Combat
         void Hit()
         {
             if (target == null) return;
+            float damage = GetComponent<BaseStats>().GetStat(Stat.Damage);
             targetHeath = target.GetComponent<Heath>();
-            targetHeath.TakeDamage(gameObject, currentWeapon.WeaponDamage);
+            targetHeath.TakeDamage(gameObject, damage);
             //targetHeath.OnDeath.AddListener(Cancel);
         }
 
         //Shoot event of Attack Animation
         void Shoot()
         {
-            currentWeapon.LaunchProjectile(rightHandTransform, leftHandTransform, gameObject, target);
+            float damage = GetComponent<BaseStats>().GetStat(Stat.Damage);
+            currentWeapon.LaunchProjectile(rightHandTransform, leftHandTransform, gameObject, target, damage);
         }
 
         public void Attack(GameObject combatTarget)

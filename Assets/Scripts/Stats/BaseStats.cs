@@ -44,7 +44,7 @@ namespace RPGame.Stats
 
         public int GetLevel()
         {
-            float currentXP = GetComponent<Experience>().ExperiencePoint;
+            float currentXP = GetComponent<Experience>().GetExperience();
             int levelLength = progression.GetLevelLength(Stat.ExperienceToLevelUp, characterClass);
             for (int level = 1; level <= levelLength; level++)
             {

@@ -18,6 +18,7 @@ public class HealthDisplay : MonoBehaviour
 
     private void UpadateHealthText()
     {
-        GetComponent<TextMeshProUGUI>().text = heath.GetHealthPercentage().ToString("0.0") + "%";
+        //GetComponent<TextMeshProUGUI>().text = heath.GetHealthPercentage().ToString("0.0") + "%";
+        GetComponent<TextMeshProUGUI>().text = String.Format("{0:0}/{1:0}", heath.GetCurrentHealth(), heath.GetMaxHealth());
     }
 }

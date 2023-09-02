@@ -8,7 +8,8 @@ namespace RPGame.Stats
         {
             Health,
             ExperienceReward,
-            ExperienceToLevelUp
+            ExperienceToLevelUp,
+            Damage
         }
 }
 

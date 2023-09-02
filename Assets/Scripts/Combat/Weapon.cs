@@ -28,11 +28,11 @@ namespace RPGame.Combat
                 return null;
         }
 
-        public void LaunchProjectile(Transform rightHandPosition, Transform leftHandPosition,GameObject instigator, Transform target)
+        public void LaunchProjectile(Transform rightHandPosition, Transform leftHandPosition,GameObject instigator, Transform target, float damage)
         {
             if (target == null) return;
             Projectile newProjectile = Instantiate(projectile, GetHandTransform(rightHandPosition, leftHandPosition).position, Quaternion.identity);
-            newProjectile.SetTarget(instigator, target, weaponDamage);
+            newProjectile.SetTarget(instigator, target, damage);
         }
 
         private Transform GetHandTransform(Transform rightHandPosition, Transform leftHandPosition)

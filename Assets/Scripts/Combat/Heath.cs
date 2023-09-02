@@ -9,7 +9,7 @@ namespace RPGame.Combat
 {
     public class Heath : MonoBehaviour, ISaveable
     {
-        [SerializeField] float heath = -1;
+        float heath = -1;
         public UnityEvent OnDeath;
         public UnityEvent OnHealthChange;
 
@@ -67,6 +67,15 @@ namespace RPGame.Combat
             }
         }
 
+        public float GetCurrentHealth()
+        {
+            return heath;
+        }
+
+        public float GetMaxHealth()
+        {
+            return GetComponent<BaseStats>().GetStat(Stat.Health);
+        }
         public float GetHealthPercentage()
         {
             return 100 * (heath / GetComponent<BaseStats>().GetStat(Stat.Health));

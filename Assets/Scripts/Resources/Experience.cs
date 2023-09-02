@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 public class Experience : MonoBehaviour, ISaveable
 {
-    [SerializeField] float experiencePoint;
+    float experiencePoint;
     public float ExperiencePoint => experiencePoint;
 
     public UnityEvent OnExperienceGain;
@@ -15,6 +15,11 @@ public class Experience : MonoBehaviour, ISaveable
     {
         this.experiencePoint += experiencePoint;
         OnExperienceGain?.Invoke();
+    }
+
+    public float GetExperience()
+    {
+        return experiencePoint;
     }
 
     public object CaptureState()
