@@ -14,7 +14,17 @@ public class EnemyHealthDisplay : MonoBehaviour
     void Awake()
     {
         fighter = GameObject.FindWithTag("Player").GetComponent<Fighter>();
-        fighter.OnAssignTarget.AddListener(AssignEnemyHealth);       
+              
+    }
+
+    private void OnEnable()
+    {
+        fighter.OnAssignTarget.AddListener(AssignEnemyHealth);
+    }
+
+    private void OnDisable()
+    {
+        fighter.OnAssignTarget.RemoveAllListeners();
     }
 
     private void AssignEnemyHealth()

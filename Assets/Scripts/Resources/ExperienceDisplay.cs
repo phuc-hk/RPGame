@@ -15,8 +15,20 @@ public class ExperienceDisplay : MonoBehaviour
     void Awake()
     {
         fighter = GameObject.FindWithTag("Player").GetComponent<Fighter>();
-        experience = GameObject.FindWithTag("Player").GetComponent<Experience>();
+        experience = GameObject.FindWithTag("Player").GetComponent<Experience>(); 
+    }
+    private void OnEnable()
+    {
         fighter.OnAssignTarget.AddListener(AssignEnemyHealth);
+    }
+
+    private void OnDisable()
+    {
+        fighter.OnAssignTarget.RemoveAllListeners();
+    }
+
+    private void Start()
+    {
         UpadateExperienceText();
     }
 

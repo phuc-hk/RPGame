@@ -14,12 +14,25 @@ namespace RPGame.Stats
         [SerializeField] Progression progression = null;
         [SerializeField] GameObject levelUpEffect = null;
         int currentLevel = 0;
+        Experience experience;
+        private void Awake()
+        {
+             experience = GetComponent<Experience>();
+        }
+
+        private void OnEnable()
+        {
+            experience.OnExperienceGain.AddListener(UpdateLevel);
+        }
+
+        private void OnDisable()
+        {
+            experience.OnExperienceGain.RemoveAllListeners();
+        }
 
         private void Start()
         {
-            currentLevel = GetLevel();
-            Experience experience = GetComponent<Experience>();
-            experience.OnExperienceGain.AddListener(UpdateLevel);
+            currentLevel = GetLevel();            
         }
 
         private void UpdateLevel()
@@ -77,7 +90,7 @@ namespace RPGame.Stats
 
         public int GetLevel()
         {
-            float currentXP = GetComponent<Experience>().GetExperience();
+            float currentXP = experience.GetExperience();
             int levelLength = progression.GetLevelLength(Stat.ExperienceToLevelUp, characterClass);
             for (int level = 1; level <= levelLength; level++)
             {

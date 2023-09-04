@@ -13,7 +13,7 @@ namespace RPGame.Combat
         public UnityEvent OnDeath;
         public UnityEvent OnHealthChange;
 
-        void Awake()
+        void Start()
         {
             if (heath < 0)
             {

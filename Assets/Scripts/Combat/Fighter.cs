@@ -35,8 +35,6 @@ namespace RPGame.Combat
             }          
         }
 
-       
-
         private void Update()
         {
             timeSinceLastAttack += Time.deltaTime;

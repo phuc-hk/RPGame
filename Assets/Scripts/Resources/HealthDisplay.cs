@@ -11,9 +11,21 @@ public class HealthDisplay : MonoBehaviour
     Heath heath;
     void Awake()
     {
-        heath = GameObject.FindWithTag("Player").GetComponent<Heath>();
-        heath.OnHealthChange.AddListener(UpadateHealthText);
+        heath = GameObject.FindWithTag("Player").GetComponent<Heath>();        
+    }
+
+    void Start()
+    {
         UpadateHealthText();
+    }
+    private void OnEnable()
+    {
+        heath.OnHealthChange.AddListener(UpadateHealthText);
+    }
+
+    private void OnDisable()
+    {
+        heath.OnHealthChange.RemoveAllListeners();
     }
 
     private void UpadateHealthText()

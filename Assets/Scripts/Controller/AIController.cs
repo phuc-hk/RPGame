@@ -27,12 +27,17 @@ public class AIController : MonoBehaviour
     Heath heath;
     Vector3 guardPositon;
 
-    private void Start()
+    private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         fighter = GetComponent<Fighter>();
         mover = GetComponent<Mover>();
         heath = GetComponent<Heath>();
+
+    }
+
+    private void Start()
+    {     
         guardPositon = transform.position;
     }
     void Update()

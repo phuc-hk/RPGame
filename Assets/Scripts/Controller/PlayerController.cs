@@ -12,7 +12,7 @@ namespace RPGame.Controller
     {
         Heath heath;
 
-        private void Start()
+        private void Awake()
         {
             heath = GetComponent<Heath>();
         }
