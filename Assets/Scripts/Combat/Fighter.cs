@@ -10,7 +10,7 @@ using UnityEngine.Events;
 
 namespace RPGame.Combat
 {
-    public class Fighter : MonoBehaviour, IAction, ISaveable
+    public class Fighter : MonoBehaviour, IAction, ISaveable, IModifierProvider
     {
         [SerializeField] float timeBetweenAttack = 3.0f;      
         [SerializeField] float chasingSpeedFraction;
@@ -92,6 +92,14 @@ namespace RPGame.Combat
         {
             float damage = GetComponent<BaseStats>().GetStat(Stat.Damage);
             currentWeapon.LaunchProjectile(rightHandTransform, leftHandTransform, gameObject, target, damage);
+        }
+
+        public IEnumerable<float> GetAddictiveModifier(Stat stat)
+        {
+           if (stat == Stat.Damage)
+            {
+                yield return currentWeapon.WeaponDamage;
+            }
         }
 
         public void Attack(GameObject combatTarget)

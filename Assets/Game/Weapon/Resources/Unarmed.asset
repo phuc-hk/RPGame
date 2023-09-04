@@ -15,4 +15,6 @@ MonoBehaviour:
   weaponPrefab: {fileID: 0}
   animatorOverride: {fileID: 0}
   weaponRange: 2
-  weaponDamage: 5
+  weaponDamage: 1
+  isRightHand: 0
+  projectile: {fileID: 0}
