@@ -13,7 +13,7 @@ public class LevelDisplay : MonoBehaviour
     BaseStats baseStats;
     void Awake()
     {
-        Debug.Log("Load level display");
+        //Debug.Log("Load level display");
         baseStats = GameObject.FindWithTag("Player").GetComponent<BaseStats>();
         experience = GameObject.FindWithTag("Player").GetComponent<Experience>();
         experience.OnExperienceGain.AddListener(UpdateLevelText);

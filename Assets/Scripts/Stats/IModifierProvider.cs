@@ -6,5 +6,6 @@ namespace RPGame.Stats
     interface IModifierProvider
     {
         IEnumerable<float> GetAddictiveModifier(Stat stat);
+        IEnumerable<float> GetPercentageModifier(Stat stat);
     }
 }

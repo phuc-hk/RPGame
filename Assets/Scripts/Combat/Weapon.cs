@@ -9,10 +9,12 @@ namespace RPGame.Combat
         [SerializeField] AnimatorOverrideController animatorOverride;
         [SerializeField] float weaponRange;
         [SerializeField] float weaponDamage;
+        [SerializeField] float percentageBonus;
         [SerializeField] bool isRightHand;
         [SerializeField] Projectile projectile;
         public float WeaponRange => weaponRange;
         public float WeaponDamage => weaponDamage;
+        public float WeaponBonus => percentageBonus;
         public GameObject Spawn(Transform rightHandPosition, Transform leftHandPosition, Animator animator)
         {         
             if(animatorOverride != null)

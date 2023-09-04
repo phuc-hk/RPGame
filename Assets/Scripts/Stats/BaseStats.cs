@@ -39,7 +39,14 @@ namespace RPGame.Stats
 
         public float GetStat(Stat stat)
         {
-            return progression.GetStat(stat, characterClass, GetLevel()) + GetAddictiveModifier(stat); 
+            return (GetBaseStat(stat) + GetAddictiveModifier(stat)) * (1 + GetPercentageModifier(stat) / 100) ;
+        }
+
+        
+
+        private float GetBaseStat(Stat stat)
+        {
+            return progression.GetStat(stat, characterClass, GetLevel());
         }
 
         private float GetAddictiveModifier(Stat stat)
@@ -48,6 +55,19 @@ namespace RPGame.Stats
             foreach (IModifierProvider provider in GetComponents<IModifierProvider>())
             {
                 foreach (float modifier in provider.GetAddictiveModifier(stat))
+                {
+                    total += modifier;
+                }
+            }
+            return total;
+        }
+
+        private float GetPercentageModifier(Stat stat)
+        {
+            float total = 0;
+            foreach (IModifierProvider provider in GetComponents<IModifierProvider>())
+            {
+                foreach (float modifier in provider.GetPercentageModifier(stat))
                 {
                     total += modifier;
                 }

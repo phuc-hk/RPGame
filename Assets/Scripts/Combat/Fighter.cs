@@ -102,6 +102,15 @@ namespace RPGame.Combat
             }
         }
 
+        public IEnumerable<float> GetPercentageModifier(Stat stat)
+        {
+            if (stat == Stat.Damage)
+            {
+                yield return currentWeapon.WeaponBonus;
+            }
+        }
+
+
         public void Attack(GameObject combatTarget)
         {
             GetComponent<ActionScheduler>().StartAction(this);
@@ -148,6 +157,6 @@ namespace RPGame.Combat
             EquipWeapon(currentWeapon);
         }
 
-
+        
     }
 }
