@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.EventSystems;
 
 namespace RPGame.Controller
 {
@@ -15,11 +16,12 @@ namespace RPGame.Controller
         enum CursorType
         {
             None, 
+            UI,
             Combat,
             Movement
         }
 
-        [System.Serializable]
+        [Serializable]
         struct CursorMapping
         {
             public CursorType cursorType;
@@ -36,9 +38,20 @@ namespace RPGame.Controller
         }
         void Update()
         {
+            if (InteractWithUI()) return;
             if (heath.IsDie()) return;
             if (InteractWithCombat()) return;
-            if (InteractWithMovement()) return;
+            if (InteractWithMovement()) return;          
+        }
+
+        private bool InteractWithUI()
+        {
+            if (EventSystem.current.IsPointerOverGameObject())
+            {
+                SetCursor(CursorType.UI);
+                return true;
+            }
+            return false;
         }
 
         private bool InteractWithCombat()
