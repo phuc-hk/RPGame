@@ -103,6 +103,34 @@ PrefabInstance:
       propertyPath: maxSpeed
       value: 4.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6097021160319633640, guid: e81c8d7d1d65a5245929ae509e7859c9, type: 3}
+      propertyPath: cursorMappings.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6097021160319633640, guid: e81c8d7d1d65a5245929ae509e7859c9, type: 3}
+      propertyPath: cursorMappings.Array.data[1].texture
+      value: 
+      objectReference: {fileID: 2800000, guid: 2d18e23e3ce249b4489b8bcdd02d3f48, type: 3}
+    - target: {fileID: 6097021160319633640, guid: e81c8d7d1d65a5245929ae509e7859c9, type: 3}
+      propertyPath: cursorMappings.Array.data[2].texture
+      value: 
+      objectReference: {fileID: 2800000, guid: 44a99ee545fd8ba46a452b12c1f9378b, type: 3}
+    - target: {fileID: 6097021160319633640, guid: e81c8d7d1d65a5245929ae509e7859c9, type: 3}
+      propertyPath: cursorMappings.Array.data[3].texture
+      value: 
+      objectReference: {fileID: 2800000, guid: 2e71a8202d3b4a3448ec85ced5a40265, type: 3}
+    - target: {fileID: 6097021160319633640, guid: e81c8d7d1d65a5245929ae509e7859c9, type: 3}
+      propertyPath: cursorMappings.Array.data[1].cursorType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6097021160319633640, guid: e81c8d7d1d65a5245929ae509e7859c9, type: 3}
+      propertyPath: cursorMappings.Array.data[2].cursorType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6097021160319633640, guid: e81c8d7d1d65a5245929ae509e7859c9, type: 3}
+      propertyPath: cursorMappings.Array.data[3].cursorType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6287183171672652853, guid: e81c8d7d1d65a5245929ae509e7859c9, type: 3}
       propertyPath: startingLevel
       value: 1
@@ -166,7 +194,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c26b1dc25145204ca754cf45178975d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heath: 100
   OnDeath:
     m_PersistentCalls:
       m_Calls:
@@ -182,6 +209,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnHealthChange:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &5924157326249722649
 MonoBehaviour:
   m_ObjectHideFlags: 0

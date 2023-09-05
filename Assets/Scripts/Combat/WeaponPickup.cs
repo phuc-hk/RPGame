@@ -1,3 +1,4 @@
+using RPGame.Controller;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -5,7 +6,7 @@ using UnityEngine;
 
 namespace RPGame.Combat
 {
-    public class WeaponPickup : MonoBehaviour
+    public class WeaponPickup : MonoBehaviour, IRaycastable
     {
         [SerializeField] Weapon weapon;
 
@@ -13,12 +14,16 @@ namespace RPGame.Combat
         {
             if (other.gameObject.CompareTag("Player"))
             {
-                Fighter fighter = other.GetComponent<Fighter>();
-                fighter.UnequipWeapon();
-                fighter.EquipWeapon(weapon);
+                Pickup(other.GetComponent<Fighter>());
                 //Destroy(gameObject);
                 StartCoroutine(HideForSeconds(5));
             }
+        }
+
+        private void Pickup(Fighter fighter)
+        {
+            fighter.UnequipWeapon();
+            fighter.EquipWeapon(weapon);
         }
 
         IEnumerator HideForSeconds(float hideTime)
@@ -35,6 +40,15 @@ namespace RPGame.Combat
             {
                 child.gameObject.SetActive(isShow);
             }
+        }
+
+        public bool HandleRaycast(PlayerController controller)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                Pickup(controller.GetComponent<Fighter>());
+            }
+            return true;
         }
     }
 

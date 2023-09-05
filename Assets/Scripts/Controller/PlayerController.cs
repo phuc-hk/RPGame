@@ -40,8 +40,27 @@ namespace RPGame.Controller
         {
             if (InteractWithUI()) return;
             if (heath.IsDie()) return;
+            if (InteractWithComponent()) return;
             if (InteractWithCombat()) return;
             if (InteractWithMovement()) return;          
+        }
+
+        private bool InteractWithComponent()
+        {
+            RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
+            foreach (RaycastHit hit in hits)
+            {
+                IRaycastable[] raycastables = hit.transform.GetComponents<IRaycastable>();
+                foreach(IRaycastable raycastable in raycastables)
+                {
+                    if (raycastable.HandleRaycast(this))
+                    {
+                        SetCursor(CursorType.Combat);
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
 
         private bool InteractWithUI()
