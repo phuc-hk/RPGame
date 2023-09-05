@@ -12,6 +12,24 @@ namespace RPGame.Controller
     {
         Heath heath;
 
+        enum CursorType
+        {
+            None, 
+            Combat,
+            Movement
+        }
+
+        [System.Serializable]
+        struct CursorMapping
+        {
+            public CursorType cursorType;
+            public Texture2D texture;
+            public Vector2 hotspot;
+        }
+
+        [SerializeField] CursorMapping[] cursorMappings;
+
+
         private void Awake()
         {
             heath = GetComponent<Heath>();
@@ -33,10 +51,29 @@ namespace RPGame.Controller
                 if (Input.GetMouseButtonDown(0))
                 {
                     GetComponent<Fighter>().Attack(combatTarget.gameObject);
-                }             
+                }
+                SetCursor(CursorType.Combat);
                 return true;
             }          
             return false;
+        }
+
+        private void SetCursor(CursorType type)
+        {
+            CursorMapping cursorMapping = GetCursprMapping(type);
+            Cursor.SetCursor(cursorMapping.texture, cursorMapping.hotspot, CursorMode.Auto);
+        }
+
+        private CursorMapping GetCursprMapping(CursorType type)
+        {
+            foreach(CursorMapping mapping in cursorMappings)
+            {
+                if (mapping.cursorType == type)
+                {
+                    return mapping;
+                }
+            }
+            return cursorMappings[0];
         }
 
         private bool InteractWithMovement()
@@ -49,6 +86,7 @@ namespace RPGame.Controller
                 {
                     GetComponent<Mover>().StartMoveAction(hitInfo.point);
                 }
+                SetCursor(CursorType.Movement);
                 return true;
             }
             return false;

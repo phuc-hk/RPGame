@@ -55,8 +55,6 @@ namespace RPGame.Stats
             return (GetBaseStat(stat) + GetAddictiveModifier(stat)) * (1 + GetPercentageModifier(stat) / 100) ;
         }
 
-        
-
         private float GetBaseStat(Stat stat)
         {
             return progression.GetStat(stat, characterClass, GetLevel());

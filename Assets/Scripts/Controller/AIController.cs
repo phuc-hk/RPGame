@@ -33,7 +33,6 @@ public class AIController : MonoBehaviour
         fighter = GetComponent<Fighter>();
         mover = GetComponent<Mover>();
         heath = GetComponent<Heath>();
-
     }
 
     private void Start()

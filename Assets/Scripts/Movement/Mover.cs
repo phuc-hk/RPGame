@@ -15,7 +15,6 @@ namespace RPGame.Movement
         NavMeshAgent navMeshAgent;
         Heath heath;
 
-
         private void Awake()
         {
             navMeshAgent = GetComponentInChildren<NavMeshAgent>();

@@ -13,8 +13,7 @@ public class EnemyHealthDisplay : MonoBehaviour
     Fighter fighter;
     void Awake()
     {
-        fighter = GameObject.FindWithTag("Player").GetComponent<Fighter>();
-              
+        fighter = GameObject.FindWithTag("Player").GetComponent<Fighter>();              
     }
 
     private void OnEnable()
