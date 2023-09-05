@@ -13,14 +13,6 @@ namespace RPGame.Controller
     {
         Heath heath;
 
-        enum CursorType
-        {
-            None, 
-            UI,
-            Combat,
-            Movement
-        }
-
         [Serializable]
         struct CursorMapping
         {
@@ -55,7 +47,7 @@ namespace RPGame.Controller
                 {
                     if (raycastable.HandleRaycast(this))
                     {
-                        SetCursor(CursorType.Combat);
+                        SetCursor(raycastable.GetCursorType());
                         return true;
                     }
                 }
