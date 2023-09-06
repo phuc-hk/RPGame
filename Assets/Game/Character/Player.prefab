@@ -47,6 +47,38 @@ PrefabInstance:
       propertyPath: chasingSpeedFraction
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1344633346928700669, guid: e81c8d7d1d65a5245929ae509e7859c9, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1344633346928700669, guid: e81c8d7d1d65a5245929ae509e7859c9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1344633346928700669, guid: e81c8d7d1d65a5245929ae509e7859c9, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1344633346928700669, guid: e81c8d7d1d65a5245929ae509e7859c9, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 2.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 5970397342622998227, guid: e81c8d7d1d65a5245929ae509e7859c9, type: 3}
+      propertyPath: m_fontSize
+      value: 0.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 5970397342622998227, guid: e81c8d7d1d65a5245929ae509e7859c9, type: 3}
+      propertyPath: m_margin.y
+      value: 0.44881773
+      objectReference: {fileID: 0}
+    - target: {fileID: 5970397342622998227, guid: e81c8d7d1d65a5245929ae509e7859c9, type: 3}
+      propertyPath: m_margin.z
+      value: 0.026781855
+      objectReference: {fileID: 0}
+    - target: {fileID: 5970397342622998227, guid: e81c8d7d1d65a5245929ae509e7859c9, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 0.34
+      objectReference: {fileID: 0}
     - target: {fileID: 6097021160319633632, guid: e81c8d7d1d65a5245929ae509e7859c9, type: 3}
       propertyPath: m_Name
       value: Player
