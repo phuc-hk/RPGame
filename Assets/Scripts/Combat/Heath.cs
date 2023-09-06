@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using RPGame.Saving;
 using RPGame.Stats;
+using System;
 
 namespace RPGame.Combat 
 {
@@ -12,7 +13,13 @@ namespace RPGame.Combat
         float heath = -1;
         public UnityEvent OnDeath;
         public UnityEvent OnHealthChange;
-        [SerializeField] UnityEvent OnTakeDamage;
+        //public UnityEvent<float> OnTakeDamage;
+        public TakeDamageEvent OnTakeDamage;
+        [Serializable]
+        public class TakeDamageEvent: UnityEvent<float>
+        {
+
+        }
 
         void Start()
         {
@@ -32,7 +39,7 @@ namespace RPGame.Combat
             }
             else
             {
-                OnTakeDamage?.Invoke();
+                OnTakeDamage?.Invoke(damage);
             }
         }
 
