@@ -12,6 +12,7 @@ namespace RPGame.Combat
         float heath = -1;
         public UnityEvent OnDeath;
         public UnityEvent OnHealthChange;
+        [SerializeField] UnityEvent OnTakeDamage;
 
         void Start()
         {
@@ -28,6 +29,10 @@ namespace RPGame.Combat
             {
                 GainExperience(instigator);
                 Die();
+            }
+            else
+            {
+                OnTakeDamage?.Invoke();
             }
         }
 
@@ -65,6 +70,7 @@ namespace RPGame.Combat
                 GetComponent<BoxCollider>().enabled = false;
                 OnDeath?.Invoke();
             }
+
         }
 
         public float GetCurrentHealth()
