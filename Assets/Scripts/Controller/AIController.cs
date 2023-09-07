@@ -41,7 +41,11 @@ public class AIController : MonoBehaviour
     }
     void Update()
     {
-        if (heath.IsDie()) return;
+        if (heath.IsDie())
+        {
+            fighter.enabled = false;
+            return;
+        } 
         //HandleAttack();
         if (IsInDetectRange() && fighter.CanAttack())
         {

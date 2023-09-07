@@ -1158,11 +1158,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 963194228, guid: 2bc40a2a39e041449a8cf6829431d20b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.119352624
+      value: 0.11935262
       objectReference: {fileID: 0}
     - target: {fileID: 963194228, guid: 2bc40a2a39e041449a8cf6829431d20b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.020715773
+      value: -0.02071577
       objectReference: {fileID: 0}
     - target: {fileID: 1103564394, guid: 2bc40a2a39e041449a8cf6829431d20b, type: 3}
       propertyPath: m_Lens.FieldOfView
@@ -1190,11 +1190,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1103564395, guid: 2bc40a2a39e041449a8cf6829431d20b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.119352624
+      value: 0.11935262
       objectReference: {fileID: 0}
     - target: {fileID: 1103564395, guid: 2bc40a2a39e041449a8cf6829431d20b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.020715773
+      value: -0.02071577
       objectReference: {fileID: 0}
     - target: {fileID: 1658436111, guid: 2bc40a2a39e041449a8cf6829431d20b, type: 3}
       propertyPath: OnTakeDamage.m_PersistentCalls.m_Calls.Array.size
@@ -1229,6 +1229,10 @@ PrefabInstance:
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 73306731509242658, guid: 2bc40a2a39e041449a8cf6829431d20b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 87001489396636343, guid: 2bc40a2a39e041449a8cf6829431d20b, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
