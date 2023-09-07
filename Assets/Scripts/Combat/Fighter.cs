@@ -82,6 +82,7 @@ namespace RPGame.Combat
             float damage = GetComponent<BaseStats>().GetStat(Stat.Damage);
             targetHeath = target.GetComponent<Heath>();
             targetHeath.TakeDamage(gameObject, damage);
+            currentWeapon.OnAttack();
             //targetHeath.OnDeath.AddListener(Cancel);
         }
 

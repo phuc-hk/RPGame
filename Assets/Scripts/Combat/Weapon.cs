@@ -15,6 +15,9 @@ namespace RPGame.Combat
         public float WeaponRange => weaponRange;
         public float WeaponDamage => weaponDamage;
         public float WeaponBonus => percentageBonus;
+        WeaponAttack weaponAttack = null;
+        GameObject weapon;
+
         public GameObject Spawn(Transform rightHandPosition, Transform leftHandPosition, Animator animator)
         {         
             if(animatorOverride != null)
@@ -23,7 +26,7 @@ namespace RPGame.Combat
             if (weaponPrefab != null)
             {
                 Transform weaponPosition = GetHandTransform(rightHandPosition, leftHandPosition);
-                GameObject weapon = (GameObject)Instantiate(weaponPrefab, weaponPosition);
+                weapon = (GameObject)Instantiate(weaponPrefab, weaponPosition);
                 return weapon;
             }
             else
@@ -48,6 +51,15 @@ namespace RPGame.Combat
         public bool HasProjectile()
         {
             return projectile != null;
+        }
+
+        public void OnAttack()
+        {
+            if (weaponPrefab != null)
+            {
+                weaponAttack = weapon.GetComponent<WeaponAttack>();
+                weaponAttack.Attack();
+            }
         }
     }
 }

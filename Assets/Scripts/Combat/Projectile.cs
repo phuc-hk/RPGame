@@ -3,9 +3,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Projectile : MonoBehaviour
 {
+    public UnityEvent OnHit;
     [SerializeField] GameObject hitEffect;
     [SerializeField] bool isHoming;
     [SerializeField] float maxLifeTime = 10;
@@ -50,6 +52,7 @@ public class Projectile : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
+            OnHit?.Invoke();
             if (hitEffect != null)
             {
                 Instantiate(hitEffect, target.transform.position + offsetPosition, Quaternion.identity);
