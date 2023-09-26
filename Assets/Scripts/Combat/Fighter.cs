@@ -1,3 +1,4 @@
+using GameDevTV.Inventories;
 using RPGame.Core;
 using RPGame.Movement;
 using RPGame.Saving;
@@ -16,16 +17,38 @@ namespace RPGame.Combat
         [SerializeField] float chasingSpeedFraction;
         [SerializeField] Transform rightHandTransform = null;
         [SerializeField] Transform leftHandTransform;
-        [SerializeField] Weapon defaultWeapon;
+        [SerializeField] WeaponConfig defaultWeapon;
         
-        Weapon currentWeapon;
+        WeaponConfig currentWeapon;
         GameObject equiptWeapon;
-
+        Equipment equipment;
         float timeSinceLastAttack = 0;
         Transform target;
         Heath targetHeath;
 
         public UnityEvent OnAssignTarget;
+
+        void Awake()
+        {
+            equipment = GetComponent<Equipment>();
+            if (equipment)
+            {
+                equipment.equipmentUpdated += UpdateWeapon;
+            }
+        }
+
+        private void UpdateWeapon()
+        {
+            var weapon = (WeaponConfig)equipment.GetItemInSlot(EquipLocation.Weapon);
+            if (weapon == null)
+            {
+                EquipWeapon(defaultWeapon);
+            }
+            else
+            {
+                EquipWeapon(weapon);
+            }
+        }
 
         void Start()
         {
@@ -132,7 +155,7 @@ namespace RPGame.Combat
            target = null;
         }
 
-        public void EquipWeapon(Weapon weapon)
+        public void EquipWeapon(WeaponConfig weapon)
         {
             currentWeapon = weapon;
             Animator animator = GetComponent<Animator>();
@@ -152,7 +175,7 @@ namespace RPGame.Combat
         public void RestoreState(object state)
         {
             string weaponName = (string)state;
-            currentWeapon = (Weapon)Resources.Load(weaponName);
+            currentWeapon = (WeaponConfig)Resources.Load(weaponName);
             EquipWeapon(currentWeapon);
         }
 

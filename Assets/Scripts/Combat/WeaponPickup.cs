@@ -8,7 +8,7 @@ namespace RPGame.Combat
 {
     public class WeaponPickup : MonoBehaviour, IRaycastable
     {
-        [SerializeField] Weapon weapon;
+        [SerializeField] WeaponConfig weapon;
 
         private void OnTriggerEnter(Collider other)
         {
