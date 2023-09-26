@@ -23,13 +23,17 @@ namespace RPGame.Controller
 
         [SerializeField] CursorMapping[] cursorMappings;
 
-
+        bool movementStarted = false;
         private void Awake()
         {
             heath = GetComponent<Heath>();
         }
         void Update()
         {
+            if (Input.GetMouseButtonUp(0))
+            {
+                movementStarted = false;
+            }
             if (InteractWithUI()) return;
             if (heath.IsDie()) return;
             if (InteractWithComponent()) return;
@@ -106,7 +110,11 @@ namespace RPGame.Controller
             bool hasHit = Physics.Raycast(GetMouseRay(), out hitInfo);
             if (hasHit)
             {
-                if (Input.GetMouseButton(0))
+                if (Input.GetMouseButtonDown(0))
+                {
+                    movementStarted = true;
+                }
+                if (Input.GetMouseButton(0) && movementStarted)
                 {
                     GetComponent<Mover>().StartMoveAction(hitInfo.point);
                 }
