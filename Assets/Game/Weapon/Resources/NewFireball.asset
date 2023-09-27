@@ -20,7 +20,7 @@ MonoBehaviour:
   stackable: 0
   allowedEquipLocation: 5
   weaponPrefab: {fileID: 0}
-  animatorOverride: {fileID: 22100000, guid: c1498897f76009f439085ebb2d87ba62, type: 2}
+  animatorOverride: {fileID: 22100000, guid: dc67753e4a8c2524b98323a9ddd6b6c2, type: 2}
   weaponRange: 7
   weaponDamage: 20
   percentageBonus: 0
