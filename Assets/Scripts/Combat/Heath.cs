@@ -28,6 +28,11 @@ namespace RPGame.Combat
                 heath = GetComponent<BaseStats>().GetStat(Stat.Health);
             }               
         }
+
+        void Update()
+        {
+            OnHealthChange?.Invoke();
+        }
         public void TakeDamage(GameObject instigator, float damage)
         {
             heath = Mathf.Max(heath - damage, 0);

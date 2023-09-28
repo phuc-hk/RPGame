@@ -1,10 +1,12 @@
 using GameDevTV.Inventories;
+using RPGame.Stats;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace RPGame.Combat
 {
     [CreateAssetMenu(fileName = "Weapon", menuName = "Weapons/Make New Equip Weapon")]
-    public class WeaponConfig : EquipableItem
+    public class WeaponConfig : EquipableItem, IModifierProvider
     {
         [SerializeField] GameObject weaponPrefab;
         [SerializeField] AnimatorOverrideController animatorOverride;
@@ -22,8 +24,10 @@ namespace RPGame.Combat
         public GameObject Spawn(Transform rightHandPosition, Transform leftHandPosition, Animator animator)
         {         
             if(animatorOverride != null)
+            {
                 animator.runtimeAnimatorController = animatorOverride;
-
+            }
+                
             if (weaponPrefab != null)
             {
                 Transform weaponPosition = GetHandTransform(rightHandPosition, leftHandPosition);
@@ -60,6 +64,22 @@ namespace RPGame.Combat
             {
                 weaponAttack = weapon.GetComponent<WeaponAttack>();
                 weaponAttack.Attack();
+            }
+        }
+
+        public IEnumerable<float> GetAddictiveModifier(Stat stat)
+        {
+            if (stat == Stat.Damage)
+            {
+                yield return WeaponDamage;
+            }
+        }
+
+        public IEnumerable<float> GetPercentageModifier(Stat stat)
+        {
+            if (stat == Stat.Damage)
+            {
+                yield return WeaponBonus;
             }
         }
     }
